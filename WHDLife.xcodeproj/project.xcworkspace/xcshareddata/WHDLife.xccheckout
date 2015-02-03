@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B78C61EF-65BB-416B-AC78-DC8DFEFEBBB1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WHDLife</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5115B2903C8894C1A4B905D023E5F188338A6618</key>
+		<string>https://github.com/greenorangeSeven/WHDLife.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WHDLife.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5115B2903C8894C1A4B905D023E5F188338A6618</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/greenorangeSeven/WHDLife.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5115B2903C8894C1A4B905D023E5F188338A6618</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5115B2903C8894C1A4B905D023E5F188338A6618</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WHDLife</string>
+		</dict>
+	</array>
+</dict>
+</plist>
