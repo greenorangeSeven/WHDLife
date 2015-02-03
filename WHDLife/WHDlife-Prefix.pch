@@ -1,0 +1,276 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+
+//添加的预编译
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "ASIHTTPRequestDelegate.h"
+#import "ASIHTTPRequestConfig.h"
+#import "Tool.h"
+#import "UserModel.h"
+#import "EGORefreshTableHeaderView.h"
+#import "DataSingleton.h"
+#import "ImgRecord.h"
+#import "IconDownloader.h"
+#import "MBProgressHUD.h"
+#import "GCDiscreetNotificationView.h"
+#import "NdUncaughtExceptionHandler.h"
+#import "UIImageView+WebCache.h"
+#import "AFOSCClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFXMLRequestOperation.h"
+
+#define AccessId @"10000001"
+#define AccessKey @"Hr54hiz7"
+
+//#define api_base_url @"http://192.168.1.27:8080/dlife_api/"
+#define api_base_url @"http://112.74.100.243:80/dlife_api/"
+//查询城市接口
+#define api_findAllCity @"params/findAllCity.htm"
+//查询城市小区接口
+#define api_findCellListByCity @"params/findCellListByCity.htm"
+//注册验证码
+#define api_createRegCode @"regUser/createRegCode.htm"
+//注册接口
+#define api_regUser @"regUser/regUser.htm"
+//忘记密码
+#define api_forgetPwd @"regUser/forgetPwd.htm"
+//发送邀请码
+#define api_createInvitationCode @"regUser/createInvitationCode.htm"
+//登录接口
+#define api_login @"regUser/login.htm"
+//分页查询活动列表
+#define api_findCellActivityByPage @"activity/findCellActivityByPage.htm"
+//获取活动详情
+#define api_findCellActivityById @"activity/findCellActivityById.htm"
+// 加入/取消相关活动
+#define api_addCancelInActivity @"activity/addCancelInActivity.htm"
+// 新增活动
+#define api_addActivityForApp @"activity/addActivityForApp.htm"
+// 新增报修
+#define api_addRepairWork @"repair/addRepairWork.htm"
+// 分页查询报修工单
+#define api_findRepairWorkByPage @"repair/findRepairWorkByPage.htm"
+//报修详情
+#define api_findRepairWorkDetaile @"repair/findRepairWorkDetail.htm"
+//报修评价
+#define api_modiRepairWorkOver @"repair/modiRepairWorkOver.htm"
+//获取广告信息
+#define api_findAdInfoList @"ad/findAdInfoList.htm"
+//获得小区通知
+#define api_findPushInfo @"push/findPushInfoByPage.htm"
+//新增投诉信息
+#define api_addSuitWork @"suit/addSuitWork.htm"
+// 分页查询投诉工单
+#define api_findSuitWorkByPage @"suit/findSuitWorkByPage.htm"
+//获取投诉详情
+#define api_findSuitWorkDetail @"suit/findSuitWorkDetail.htm"
+//用户提交投诉评价结果
+#define api_modiSuitWorkOver @"suit/modiSuitWorkOver.htm"
+//分页查询快递收件信息
+#define api_findExpressinInfoByPage @"express/findExpressinInfoByPage.htm"
+//查询所有快递公司
+#define api_findAllExpressCompany @"express/findAllExpressCompany.htm"
+//发件预约
+#define api_addExpressoutInfo @"express/addExpressoutInfo.htm"
+//收件方式确认
+#define api_setReceiveType @"express/setReceiveType.htm"
+//快递历史记录
+#define api_findExpressHistory @"express/findExpressHistory.htm"
+//用户提交快递评价结果
+#define api_modiExpressWorkOver @"express/modiExpressWorkOver.htm"
+//查询树形结构的全部商品分类
+#define api_findCommodityClass @"commodity/findCommodityClassByList.htm"
+//分页查询商品分类
+#define api_findCommodityClassByPage @"commodity/findCommodityClassByPage.htm"
+//分页查询商品信息
+#define api_findCommodityByPage @"commodity/findCommodityByPage.htm"
+//获取单商品详情
+#define api_findCommodityInfoById @"commodity/findCommodityInfoById.htm"
+//商品收藏
+#define api_addCollection @"commodity/addCollection.htm"
+//取消收藏
+#define api_delCollection @"commodity/delCollection.htm"
+//分页查询用户收藏商品
+#define api_findCollectionByPage @"commodity/findCollectionByPage.htm"
+//分页查询账单明细数据
+#define api_findBillDetailsByPage @"bill/findBillDetailsByPage.htm"
+//分页查询用户积分使用获取记录
+#define api_findIntegral @"integral/findRegUserIntegralByPage.htm"
+//签到打卡
+#define api_signin @"integral/signin.htm"
+//查询小区周边商家记录
+#define api_peripheralShop @"shop/findAllPeripheralShopList.htm"
+//更换头像
+#define api_changeUserPhoto @"regUser/changeUserPhoto.htm"
+//更换用户背景
+#define api_changeUserBgImg @"regUser/changeUserBgImg.htm"
+//修改个人资料
+#define api_modiUserInfo @"regUser/modiUserInfo.htm"
+//修改密码
+#define api_changeUserPwd @"regUser/changeUserPwd.htm"
+//邀请注册接口
+#define api_invitationCodeReg @"regUser/invitationCodeReg.htm"
+//版本更新
+#define api_findSysUpdate @"sysUpdate/findSysUpdate.htm"
+//分页查询活动报名用户列表
+#define api_findCellActivityUserByPage @"activity/findCellActivityUserByPage.htm"
+//查询订单数据
+#define api_findOrderByPage @"order/findOrderByPage.htm"
+//获取所有订单状态
+#define api_findAllOrderState @"order/findAllOrderState.htm"
+
+//获取所有分类的朋友圈信息
+#define api_findTopicInfoByPage @"topic/findTopicInfoByPage.htm"
+//获取我关注的帖子
+#define api_findTopicInfoByAttention @"topic/findTopicInfoByAttention.htm"
+//获取我的回复的帖子
+#define api_findTopicInfoByReply @"topic/findTopicInfoByReply.htm"
+//获取我的收藏帖子
+#define api_findTopicInfoByHeart @"topic/findTopicInfoByHeart.htm"
+//新建帖子
+#define api_addTopicInfo @"topic/addTopicInfo.htm"
+//获取帖子详情
+#define api_findTopicInfoById @"topic/findTopicInfoById.htm"
+//帖子回复接口
+#define api_addTopicReply @"topic/addTopicReply.htm"
+//关注用户
+#define api_addTopicAttnetion @"topic/addTopicAttnetion.htm"
+//取消关注
+#define api_delTopicAttnetion @"topic/delTopicAttnetion.htm"
+//收藏帖子
+#define api_addTopicHeart @"topic/addTopicHeart.htm"
+//取消收藏帖子
+#define api_delTopicHeart @"topic/delTopicHeart.htm"
+//用户确认已收件
+#define api_receiveExpress @"express/receiveExpressInfo.htm"
+//下单接口
+#define api_orderSubmit @"order/orderSubmit.htm"
+//生成支付宝订单参数
+#define api_createAlipayParams @"payment/createAlipayParams.htm"
+//订单支付成功状态码
+#define ORDER_PAY_OK @"9000"
+
+//订单支付通知
+#define ORDER_PAY_NOTIC @"ORDER_PAY_NOTIC"
+
+#define ORIGINAL_MAX_WIDTH 640.0f
+
+#define servicephone @"027-87923456"
+
+#define ActivityCellIdentifier @"ActivityCellIdentifier"
+#define RepairImageCellIdentifier @"RepairImageCellIdentifier"
+#define RepairImageSmallCellIdentifier @"RepairImageSmallCellIdentifier"
+#define MyRepairCellIdentifier @"MyRepairCellIdentifier"
+#define MySuitCellIdentifier @"MySuitCellIdentifier"
+#define RepairBasicCellIdentifier @"RepairBasicCellIdentifier"
+#define RepairDispatchCellIdentifier @"RepairDispatchCellIdentifier"
+#define RepairFinishCellIdentifier @"RepairFinishCellIdentifier"
+#define RepairResultCellIdentifier @"RepairResultCellIdentifier"
+#define NoticeNewCellIdentifier @"NoticeNewCellIdentifier"
+#define NoticeOldCellIdentifier @"NoticeOldCellIdentifier"
+#define SuitBasicCellIdentifier @"SuitBasicCellIdentifier"
+#define SuitReplyCellIdentifier @"SuitReplyCellIdentifier"
+#define SuitResutCellIdentifier @"SuitResutCellIdentifier"
+#define GatherTableCellIdentifier @"GatherTableCellIdentifier"
+#define HistoryExpressCellIdentifier @"HistoryExpressCellIdentifier"
+#define CommodityClassCellIdentifier @"CommodityClassCellIdentifier"
+#define CommodityCellIdentifier @"CommodityCellIdentifier"
+#define ShopCarCellIdentifier @"ShopCarCellIdentifier"
+#define ShopCarItemCellIdentifier @"ShopCarItemCellIdentifier"
+#define ConfirmationCellIdentifier @"ConfirmationCellIdentifier"
+#define BillCellIdentifier @"BillCellIdentifier"
+#define PurseCellIdentifier @"PurseCellIdentifier"
+#define IntegralCellIdentifier @"IntegralCellIdentifier"
+#define MyCollectCellIdentifier @"MyCollectCellIdentifier"
+#define ChangeHouseCellIdentifier @"ChangeHouseCellIdentifier"
+#define ActivityPlaysCellIdentifier @"ActivityPlaysCellIdentifier"
+#define MyOrderCellIdentifier @"MyOrderCellIdentifier"
+#define OrderCommodityCellIdentifier @"OrderCommodityCellIdentifier"
+
+
+#define Notification_RefreshGatherTable @"Notification_RefreshGatherTable"
+#define Notification_RefreshHistoryTable @"Notification_RefreshHistoryTable"
+#define Notification_RefreshShopCarTable @"Notification_RefreshShopCarTable"
+
+
+#define createshoppingcar @"create table shoppingcar (id integer primary key autoincrement not null, commodityid text, name text, properyStr text,imagefull text,price text,shopid text,shopname text,number int,user_id text,ischeck text)"
+
+
+#define api_base_urlnotport @"http://112.74.100.243/dlife_api/"
+//小区通知详情页面
+#define htm_pushDetailHtm @"app/pushDetail.htm?pushId="                   
+//广告详情页面
+#define htm_adDetail @"app/adDetail.htm?adId="
+//生活信息
+#define htm_lifeInfoHtm @"app/lifeList.htm?accessId="
+//办事指南
+#define htm_workingManual @"app/workingManual.htm?accessId="
+//物业信息
+#define htm_managerInfo @"app/managerInfo.htm?cellId="
+//便民黄页
+#define htm_yellowPage @"app/yellowPage.htm?accessId="
+//小区简介
+#define htm_cellInfo @"app/cellInfo.htm?cellId="
+//关于智慧社区
+#define htm_about @"app/about.htm"
+//关于帮助手册
+#define htm_help @"app/help.htm"
+//使用条款
+#define htm_regService @"app/regService.htm?accessId="
+
+#define UserInfoCache @"UserInfoCache"
+
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPHONE_6 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )667 ) < DBL_EPSILON )
+#define IS_IPHONE_6plus ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1104 ) < DBL_EPSILON )
+
+#define IS_IOS7 ([[[UIDevice currentDevice]systemVersion]floatValue]>=7.0)
+#define IS_IOS8 ([[[UIDevice currentDevice]systemVersion]floatValue]>=8.0)
+
+#define loadNext20Tip @"点击加载更多 . . ."
+#define loadingTip @"正在加载 . . ."
+#define networkError @"网络无连接"
+#define noNetworkTip @"网络无连接"
+
+#define RGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/) \
+[UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
+
+//html头部
+#define HTML_Style @"<meta name='viewport' content='width=decice-width,uer-scalable=no'><style>#web_title {color: #F78022; margin-top: 15px; margin-bottom: 10px; font-weight:bold; text-align:center; font-size:20px;}#web_title img{vertical-align:middle;margin-right:6px;}#web_title a{color:#0D6DA8;}#web_summary {margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_summaryred {color: #c7252b;margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_column {background-color:#e5e5e5; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; font-size:16px; margin-right: -7px; margin-left: -7px;}#web_date {color: #000000; margin-top: 15px; margin-bottom: 10px; font-size:14px;text-align:center;}#web_outline {color: #707070; font-size: 12px;}#web_outline a{color:#0D6DA8;}#web_software{color:#808080;font-size:12px}#web_body img {max-width: 300px;}#web_body {font-size:14px;max-width:320px;line-height:24px; margin-top: 5px} #web_body table{max-width:320px;}#web_body pre { font-size:9pt;font-family:Courier New,Arial;border:1px solid #ddd;border-left:5px solid #6CE26C;background:#f6f6f6;padding:5px;}</style>"
+#define HTML_Splitline @"<hr style='height:0.5px; background-color:#0D6DA8; margin-bottom:5px'/>"
+#define HTML_Bottom @"<div style='margin-bottom:60px'/>"
+
+#define AppVersion @"1.0"
+#define AppVersionCode @"1"
+
+#define noConnect @"noConnect"
+#define wifi @"wifi"
+#define netConnect @"netConnect"
+
+#ifdef DEBUG
+#define debugLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define debugLog(...)
+#define debugMethod()
+#endif
+
+#endif

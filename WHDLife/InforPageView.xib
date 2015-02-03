@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InforPageView">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="454"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1k-o5-stI">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="454"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0H-Q0-3rD">
+                            <rect key="frame" x="15" y="15" width="291" height="143"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="291" id="hMV-fM-QXh"/>
+                                <constraint firstAttribute="height" constant="143" id="z3g-53-zaR"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="life_infor">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="lifeInfoAction:" destination="-1" eventType="touchUpInside" id="Y2I-Ae-gey"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tL-Nl-P5e">
+                            <rect key="frame" x="15" y="173" width="136" height="130"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="130" id="DWd-Yq-XDj"/>
+                                <constraint firstAttribute="width" constant="136" id="KSK-ZU-vKn"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="life_compass">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="compassAction:" destination="-1" eventType="touchUpInside" id="LFU-Sj-aZV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1v3-J3-V0n">
+                            <rect key="frame" x="170" y="173" width="136" height="130"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="130" id="5OL-Ks-Rgv"/>
+                                <constraint firstAttribute="width" constant="136" id="Y0O-Ha-Ze6"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="life_coninfor">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="coninforAction:" destination="-1" eventType="touchUpInside" id="9C6-Eq-2fi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iic-dN-9zD">
+                            <rect key="frame" x="15" y="318" width="136" height="130"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="130" id="XTa-aF-HH6"/>
+                                <constraint firstAttribute="width" constant="136" id="bWr-ZX-2XT"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="life_almanac">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="almanacAction:" destination="-1" eventType="touchUpInside" id="Y1d-iT-FC1"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIZ-EQ-LXB">
+                            <rect key="frame" x="170" y="318" width="136" height="130"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="136" id="3C8-R5-mda"/>
+                                <constraint firstAttribute="height" constant="130" id="BoY-SY-ab9"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="life_overview">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="overviewAction:" destination="-1" eventType="touchUpInside" id="g4d-ht-wsJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="wIZ-EQ-LXB" secondAttribute="trailing" constant="14" id="3dK-Bq-Nco"/>
+                        <constraint firstItem="E0H-Q0-3rD" firstAttribute="leading" secondItem="a1k-o5-stI" secondAttribute="leading" constant="15" id="6bw-VE-DuR"/>
+                        <constraint firstAttribute="trailing" secondItem="E0H-Q0-3rD" secondAttribute="trailing" constant="14" id="EOx-FU-Zgb"/>
+                        <constraint firstItem="2tL-Nl-P5e" firstAttribute="top" secondItem="E0H-Q0-3rD" secondAttribute="bottom" constant="15" id="GO4-Rz-NSQ"/>
+                        <constraint firstAttribute="bottom" secondItem="wIZ-EQ-LXB" secondAttribute="bottom" constant="6" id="Gqg-aH-nYH"/>
+                        <constraint firstAttribute="trailing" secondItem="1v3-J3-V0n" secondAttribute="trailing" constant="14" id="Hvo-bD-94u"/>
+                        <constraint firstItem="2tL-Nl-P5e" firstAttribute="leading" secondItem="a1k-o5-stI" secondAttribute="leading" constant="15" id="JZH-Oc-eeU"/>
+                        <constraint firstAttribute="bottom" secondItem="Iic-dN-9zD" secondAttribute="bottom" constant="6" id="M1F-Eh-crQ"/>
+                        <constraint firstItem="Iic-dN-9zD" firstAttribute="top" secondItem="2tL-Nl-P5e" secondAttribute="bottom" constant="15" id="R7v-lX-O1u"/>
+                        <constraint firstItem="wIZ-EQ-LXB" firstAttribute="top" secondItem="1v3-J3-V0n" secondAttribute="bottom" constant="15" id="b4K-Of-6OP"/>
+                        <constraint firstItem="1v3-J3-V0n" firstAttribute="top" secondItem="E0H-Q0-3rD" secondAttribute="bottom" constant="15" id="bwy-ZU-5dM"/>
+                        <constraint firstItem="Iic-dN-9zD" firstAttribute="leading" secondItem="a1k-o5-stI" secondAttribute="leading" constant="15" id="cVm-Dh-bmh"/>
+                        <constraint firstItem="1v3-J3-V0n" firstAttribute="leading" secondItem="2tL-Nl-P5e" secondAttribute="trailing" constant="19" id="ctP-sG-Tmy"/>
+                        <constraint firstItem="1v3-J3-V0n" firstAttribute="leading" secondItem="2tL-Nl-P5e" secondAttribute="trailing" constant="19" id="hWa-dp-hpt"/>
+                        <constraint firstItem="1v3-J3-V0n" firstAttribute="top" secondItem="E0H-Q0-3rD" secondAttribute="bottom" constant="15" id="jXb-Rg-XjT"/>
+                        <constraint firstItem="wIZ-EQ-LXB" firstAttribute="top" secondItem="1v3-J3-V0n" secondAttribute="bottom" constant="15" id="nfG-kq-LsP"/>
+                        <constraint firstItem="wIZ-EQ-LXB" firstAttribute="leading" secondItem="Iic-dN-9zD" secondAttribute="trailing" constant="19" id="pGH-7Q-09A"/>
+                        <constraint firstItem="E0H-Q0-3rD" firstAttribute="top" secondItem="a1k-o5-stI" secondAttribute="top" constant="15" id="qTr-4j-B97"/>
+                        <constraint firstItem="Iic-dN-9zD" firstAttribute="top" secondItem="2tL-Nl-P5e" secondAttribute="bottom" constant="15" id="wFq-iX-bKE"/>
+                        <constraint firstItem="wIZ-EQ-LXB" firstAttribute="leading" secondItem="Iic-dN-9zD" secondAttribute="trailing" constant="19" id="y1m-UG-63f"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="a1k-o5-stI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4YM-qt-SEb"/>
+                <constraint firstAttribute="bottom" secondItem="a1k-o5-stI" secondAttribute="bottom" id="bir-DD-IKn"/>
+                <constraint firstItem="a1k-o5-stI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sr2-8d-M5u"/>
+                <constraint firstAttribute="trailing" secondItem="a1k-o5-stI" secondAttribute="trailing" id="x2m-ng-R8U"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="291" y="33"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="life_almanac" width="136" height="130"/>
+        <image name="life_compass" width="136" height="130"/>
+        <image name="life_coninfor" width="136" height="130"/>
+        <image name="life_infor" width="291" height="143"/>
+        <image name="life_overview" width="136" height="130"/>
+    </resources>
+</document>

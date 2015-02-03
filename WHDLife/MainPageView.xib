@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainPageView">
+            <connections>
+                <outlet property="advIv" destination="Dgw-1P-6ST" id="ttb-EF-few"/>
+                <outlet property="scrollView" destination="wXf-12-946" id="f5R-8A-bQt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXf-12-946">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ZV-1f-cLz">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                            <subviews>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgw-1P-6ST">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="7Id-5P-MLE"/>
+                                <constraint firstAttribute="height" constant="155" id="FiX-5U-A12"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hA-Cd-wAG">
+                            <rect key="frame" x="0.0" y="156" width="320" height="301"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rht-hV-Abf">
+                                    <rect key="frame" x="133" y="204" width="54" height="55"/>
+                                    <state key="normal" image="main_shxx">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="lifeInfoAction:" destination="-1" eventType="touchUpInside" id="jep-EU-pin"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生活信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vez-h9-krd">
+                                    <rect key="frame" x="128" y="260" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdF-I6-he0">
+                                    <rect key="frame" x="237" y="204" width="54" height="55"/>
+                                    <state key="normal" image="main_bszl">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="compassAction:" destination="-1" eventType="touchUpInside" id="Chi-n2-6Po"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="办事指南" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzX-tH-AVp">
+                                    <rect key="frame" x="232" y="260" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV9-JY-CKt">
+                                    <rect key="frame" x="31" y="110" width="54" height="55"/>
+                                    <state key="normal" image="main_sqhd">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="社区活动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ged-GL-wQx">
+                                    <rect key="frame" x="26" y="166" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2K-Vp-TlZ">
+                                    <rect key="frame" x="131" y="110" width="54" height="55"/>
+                                    <state key="normal" image="main_shjf">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="payFeeAction:" destination="-1" eventType="touchUpInside" id="0Mo-vS-UZh"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生活缴费" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8on-2e-70i">
+                                    <rect key="frame" x="126" y="166" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3H-hc-Ipo">
+                                    <rect key="frame" x="237" y="110" width="54" height="55"/>
+                                    <state key="normal" image="main_fwbx">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="repairAction:" destination="-1" eventType="touchUpInside" id="V8I-yA-ucz"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="房屋报修" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEC-wX-qxA">
+                                    <rect key="frame" x="232" y="166" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYe-pY-Q7R">
+                                    <rect key="frame" x="133" y="18" width="54" height="55"/>
+                                    <state key="normal" image="main_wytz">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="noticeAction:" destination="-1" eventType="touchUpInside" id="msm-vv-s75"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="物业通知" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SB-Vs-HeC">
+                                    <rect key="frame" x="128" y="74" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qA3-z7-4RD">
+                                    <rect key="frame" x="237" y="18" width="54" height="55"/>
+                                    <state key="normal" image="main_jpts">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="commodityAction:" destination="-1" eventType="touchUpInside" id="MLg-dx-Oz9"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="精品推送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGs-RP-Hm3">
+                                    <rect key="frame" x="232" y="74" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzl-ue-0xE">
+                                    <rect key="frame" x="31" y="18" width="54" height="55"/>
+                                    <state key="normal" image="main_kdjst">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="expressAction:" destination="-1" eventType="touchUpInside" id="fFO-NG-wu1"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="快递及时通" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSc-2y-Evo">
+                                    <rect key="frame" x="26" y="74" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tps-yf-bHV">
+                                    <rect key="frame" x="31" y="112" width="54" height="55"/>
+                                    <state key="normal" image="main_sqhd">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="activityAction:" destination="-1" eventType="touchUpInside" id="NI8-xq-rWm"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="便民黄历" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTi-xD-Jsc">
+                                    <rect key="frame" x="26" y="260" width="65" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iN7-oI-CLg">
+                                    <rect key="frame" x="31" y="204" width="54" height="55"/>
+                                    <state key="normal" image="main_bmhy">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="almanacAction:" destination="-1" eventType="touchUpInside" id="IZf-wx-VTW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="301" id="hA9-Gl-VUE"/>
+                                <constraint firstAttribute="width" constant="320" id="zBY-zf-psQ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="0hA-Cd-wAG" firstAttribute="leading" secondItem="wXf-12-946" secondAttribute="leading" id="BmQ-ni-eff"/>
+                        <constraint firstAttribute="bottom" secondItem="0hA-Cd-wAG" secondAttribute="bottom" constant="1" id="GKf-nW-RDw"/>
+                        <constraint firstItem="0hA-Cd-wAG" firstAttribute="top" secondItem="0ZV-1f-cLz" secondAttribute="bottom" constant="1" id="O3n-W2-wL7"/>
+                        <constraint firstAttribute="trailing" secondItem="0ZV-1f-cLz" secondAttribute="trailing" id="Q6D-iA-CZ5"/>
+                        <constraint firstItem="0ZV-1f-cLz" firstAttribute="top" secondItem="wXf-12-946" secondAttribute="top" id="UFH-CW-IwY"/>
+                        <constraint firstItem="0ZV-1f-cLz" firstAttribute="leading" secondItem="wXf-12-946" secondAttribute="leading" id="fBy-Op-fB7"/>
+                        <constraint firstAttribute="trailing" secondItem="0hA-Cd-wAG" secondAttribute="trailing" id="j2K-K6-FHm"/>
+                        <constraint firstItem="0hA-Cd-wAG" firstAttribute="top" secondItem="0ZV-1f-cLz" secondAttribute="bottom" constant="1" id="lqW-QU-gIv"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wXf-12-946" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0An-Lj-ips"/>
+                <constraint firstItem="wXf-12-946" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8ko-WB-aGk"/>
+                <constraint firstAttribute="bottom" secondItem="wXf-12-946" secondAttribute="bottom" id="ZSi-QN-8hB"/>
+                <constraint firstAttribute="trailing" secondItem="wXf-12-946" secondAttribute="trailing" id="crP-gh-k50"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="82" y="123"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="main_bmhy" width="54" height="55"/>
+        <image name="main_bszl" width="54" height="55"/>
+        <image name="main_fwbx" width="54" height="55"/>
+        <image name="main_jpts" width="54" height="55"/>
+        <image name="main_kdjst" width="54" height="55"/>
+        <image name="main_shjf" width="54" height="55"/>
+        <image name="main_shxx" width="54" height="55"/>
+        <image name="main_sqhd" width="54" height="55"/>
+        <image name="main_wytz" width="54" height="55"/>
+    </resources>
+</document>
