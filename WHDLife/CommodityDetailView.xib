@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommodityDetailView">
             <connections>
+                <outlet property="addToShopCarBtn" destination="DBA-Ba-7Zj" id="Frv-BV-s5Y"/>
+                <outlet property="buyNowBtn" destination="l81-1S-DmV" id="RdG-OH-D4k"/>
                 <outlet property="collectionBtn" destination="5lO-E6-JZA" id="71u-OE-FmI"/>
                 <outlet property="collectionLb" destination="q9s-EL-41W" id="pbj-Dj-mOM"/>
                 <outlet property="detailWebView" destination="zrx-Vh-MpA" id="hmq-FT-T8o"/>
@@ -25,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="o4V-2l-R76">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bRy-kl-jnr">
+                        <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bRy-kl-jnr">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -54,7 +56,7 @@
                             <color key="textColor" red="0.88235294119999996" green="0.16862745100000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gQg-p4-VeU">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gQg-p4-VeU">
                             <rect key="frame" x="254" y="220" width="56" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.88235294119999996" green="0.16862745100000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,13 +125,45 @@
                         </label>
                     </subviews>
                 </scrollView>
+                <view contentMode="scaleToFill" id="UsR-Op-Ihb">
+                    <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DBA-Ba-7Zj">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.89019607840000003" green="0.19215686269999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="加入购物车" image="shopcar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="addToShopCarAction:" destination="-1" eventType="touchUpInside" id="mOD-s9-cp4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l81-1S-DmV">
+                            <rect key="frame" x="161" y="0.0" width="159" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.89019607840000003" green="0.19215686269999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="立即购买">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="buyNowAction:" destination="-1" eventType="touchUpInside" id="Sq8-fN-E2r"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="-131" y="3"/>
+            <point key="canvasLocation" x="-94" y="25"/>
         </view>
     </objects>
     <resources>
+        <image name="shopcar" width="30" height="30"/>
         <image name="star_nor" width="20" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

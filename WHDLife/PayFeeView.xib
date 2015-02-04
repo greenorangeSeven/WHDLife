@@ -66,14 +66,14 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riM-aQ-JE3">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riM-aQ-JE3">
                             <rect key="frame" x="29" y="285" width="262" height="1"/>
                             <color key="backgroundColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbg-fm-FJ4">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbg-fm-FJ4">
                             <rect key="frame" x="50" y="303" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  移动话费" image="greenpoint">
@@ -84,7 +84,7 @@
                                 <action selector="ydFeeAction:" destination="-1" eventType="touchUpInside" id="RLK-HQ-gS4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRF-l7-Kuj">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRF-l7-Kuj">
                             <rect key="frame" x="182" y="303" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  联通话费" image="greenpoint">
@@ -95,7 +95,7 @@
                                 <action selector="ltFeeAction:" destination="-1" eventType="touchUpInside" id="YOL-d2-nhg"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqh-e9-rj8">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqh-e9-rj8">
                             <rect key="frame" x="50" y="333" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  电信话费" image="greenpoint">
@@ -106,7 +106,7 @@
                                 <action selector="dxFeeAction:" destination="-1" eventType="touchUpInside" id="A6K-7X-f7O"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTN-9Z-LJC">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTN-9Z-LJC">
                             <rect key="frame" x="182" y="333" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  数字电视" image="greenpoint">
@@ -117,7 +117,7 @@
                                 <action selector="szdsFeeAction:" destination="-1" eventType="touchUpInside" id="ehT-ee-BoD"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNq-YV-8J4">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNq-YV-8J4">
                             <rect key="frame" x="50" y="363" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  预存水费" image="greenpoint">
@@ -128,7 +128,7 @@
                                 <action selector="ycsfFeeAction:" destination="-1" eventType="touchUpInside" id="A1u-Av-fMc"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0R-Ns-8aI">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0R-Ns-8aI">
                             <rect key="frame" x="182" y="363" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  预存网费" image="greenpoint">
@@ -139,7 +139,7 @@
                                 <action selector="ycwfFeeAction:" destination="-1" eventType="touchUpInside" id="fRS-4E-BGc"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0J-o4-8ei">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0J-o4-8ei">
                             <rect key="frame" x="50" y="393" width="82" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="  预存电费" image="greenpoint">

@@ -18,8 +18,10 @@
 #import "ShopCarView.h"
 #import "ConfirmationView.h"
 #import "ShopCarItem.h"
+#import "MWPhotoBrowser.h"
+#import "MyOrderView.h"
 
-@interface CommodityDetailView ()<UIWebViewDelegate, SGFocusImageFrameDelegate>
+@interface CommodityDetailView ()<UIWebViewDelegate, SGFocusImageFrameDelegate, MWPhotoBrowserDelegate>
 {
     UserInfo *userInfo;
     Commodity *commodityDetail;
@@ -29,7 +31,12 @@
     NSMutableArray *properyKeyArray;
     NSMutableArray *properyValArray;
     float webViewY;
+    
+    int advIndex;
+    NSMutableArray *_photos;
 }
+
+@property (nonatomic, retain) NSMutableArray *photos;
 
 @end
 
@@ -53,52 +60,33 @@
     self.navigationItem.rightBarButtonItem = btnTel;
     
     //button长按事件
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(shopCarLong:)];
-    longPress.minimumPressDuration = 0.8; //定义按的时间
-    [rBtn addGestureRecognizer:longPress];
+//    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(shopCarLong:)];
+//    longPress.minimumPressDuration = 0.8; //定义按的时间
+//    [rBtn addGestureRecognizer:longPress];
     
     userInfo = [[UserModel Instance] getUserInfo];
     [self getDetailData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoOrder) name:Notification_CommodityDetailGotoOrder object:nil];
+}
+
+- (void)gotoOrder
+{
+    MyOrderView *myOrder = [[MyOrderView alloc] init];
+    [self.navigationController pushViewController:myOrder animated:YES];
 }
 
 -(void)addShopCarAction:(id)sender{
-    FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
-    if (![database open]) {
-        NSLog(@"Open database failed");
-        return;
-    }
-    if (![database tableExists:@"shoppingcar"]) {
-        [database executeUpdate:createshoppingcar];
-    }
-    
-    NSMutableString *properysMuStr = [[NSMutableString alloc] init];
-    
-    for (int i = 0; i < [properyKeyArray count]; i++) {
-        [properysMuStr appendString:[NSString stringWithFormat:@"%@:%@  ", [properyKeyArray objectAtIndex:i], [properyValArray objectAtIndex:i]]];
-    }
-    NSString *properysStr = [NSString stringWithString:properysMuStr];
-    
-    BOOL addGood;
-    FMResultSet* resultSet=[database executeQuery:@"select * from shoppingcar where commodityid = ? and user_id = ? and properyStr = ?", commodityDetail.commodityId, userInfo.regUserId, properysStr];
-    if ([resultSet next]) {
-        addGood = [database executeUpdate:@"update shoppingcar set number = number + 1 where id= ?", [resultSet stringForColumn:@"id"]];
-    }
-    else
-    {
-        addGood = [database executeUpdate:@"insert into shoppingcar (commodityid, name, properyStr, imagefull, price, shopid, shopname, number, user_id, ischeck) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", commodityDetail.commodityId, commodityDetail.commodityName, properysStr, [commodityDetail.imgStrList objectAtIndex:0], [NSString stringWithFormat:@"%0.2f", commodityDetail.price], commodityDetail.shopId, commodityDetail.shopName, [NSNumber numberWithInt:1], userInfo.regUserId, @"0"];
-    }
-    if (addGood) {
-        [Tool showCustomHUD:@"已添加至购物车" andView:self.view andImage:@"37x-Checkmark.png" andAfterDelay:2];
-    }
-    [database close];
+    ShopCarView *carView = [[ShopCarView alloc] init];
+    [self.navigationController pushViewController:carView animated:YES];
 }
 
--(void)shopCarLong:(UILongPressGestureRecognizer *)gestureRecognizer{
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
-        ShopCarView *carView = [[ShopCarView alloc] init];
-        [self.navigationController pushViewController:carView animated:YES];
-    }
-}
+//-(void)shopCarLong:(UILongPressGestureRecognizer *)gestureRecognizer{
+//    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+//        ShopCarView *carView = [[ShopCarView alloc] init];
+//        [self.navigationController pushViewController:carView animated:YES];
+//    }
+//}
 
 - (void)getDetailData
 {
@@ -186,6 +174,46 @@
     bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 150) delegate:self imageItems:itemArray isAuto:YES];
     [bannerView scrollToIndex:0];
     [self.shopImageIv addSubview:bannerView];
+}
+
+//顶部图片滑动点击委托协议实现事件
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item
+{
+    if ([self.photos count] == 0) {
+        NSMutableArray *photos = [[NSMutableArray alloc] init];
+        for (NSString *d in imageDatas) {
+            MWPhoto * photo = [MWPhoto photoWithURL:[NSURL URLWithString:d]];
+            [photos addObject:photo];
+        }
+        self.photos = photos;
+    }
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = YES;
+    browser.displayNavArrows = NO;//左右分页切换,默认否
+    browser.displaySelectionButtons = NO;//是否显示选择按钮在图片上,默认否
+    browser.alwaysShowControls = YES;//控制条件控件 是否显示,默认否
+    browser.zoomPhotosToFill = NO;//是否全屏,默认是
+    //    browser.wantsFullScreenLayout = YES;//是否全屏
+    [browser setCurrentPhotoIndex:advIndex];
+    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController pushViewController:browser animated:YES];
+}
+
+//顶部图片自动滑动委托协议实现事件
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index;
+{
+    advIndex = index;
+}
+
+//MWPhotoBrowserDelegate委托事件
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
 }
 
 - (void)initCommodityPropery
@@ -484,4 +512,62 @@
                                }];
 }
 
+- (IBAction)addToShopCarAction:(id)sender {
+    FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
+    if (![database open]) {
+        NSLog(@"Open database failed");
+        return;
+    }
+    if (![database tableExists:@"shoppingcar"]) {
+        [database executeUpdate:createshoppingcar];
+    }
+    
+    NSMutableString *properysMuStr = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < [properyKeyArray count]; i++) {
+        [properysMuStr appendString:[NSString stringWithFormat:@"%@:%@  ", [properyKeyArray objectAtIndex:i], [properyValArray objectAtIndex:i]]];
+    }
+    NSString *properysStr = [NSString stringWithString:properysMuStr];
+    
+    BOOL addGood;
+    FMResultSet* resultSet=[database executeQuery:@"select * from shoppingcar where commodityid = ? and user_id = ? and properyStr = ?", commodityDetail.commodityId, userInfo.regUserId, properysStr];
+    if ([resultSet next]) {
+        addGood = [database executeUpdate:@"update shoppingcar set number = number + 1 where id= ?", [resultSet stringForColumn:@"id"]];
+    }
+    else
+    {
+        addGood = [database executeUpdate:@"insert into shoppingcar (commodityid, name, properyStr, imagefull, price, shopid, shopname, number, user_id, ischeck) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", commodityDetail.commodityId, commodityDetail.commodityName, properysStr, [commodityDetail.imgStrList objectAtIndex:0], [NSString stringWithFormat:@"%0.2f", commodityDetail.price], commodityDetail.shopId, commodityDetail.shopName, [NSNumber numberWithInt:1], userInfo.regUserId, @"0"];
+    }
+    if (addGood) {
+        [Tool showCustomHUD:@"已添加至购物车" andView:self.view andImage:@"37x-Checkmark.png" andAfterDelay:2];
+    }
+    [database close];
+}
+
+- (IBAction)buyNowAction:(id)sender {
+    ShopCarItem *item = [[ShopCarItem alloc] init];
+    item.dbid = -1;
+    item.commodityid = commodityDetail.commodityId;
+    item.name = commodityDetail.commodityName;
+    //商品属性
+    NSMutableString *properysMuStr = [[NSMutableString alloc] init];
+    for (int i = 0; i < [properyKeyArray count]; i++) {
+        [properysMuStr appendString:[NSString stringWithFormat:@"%@:%@  ", [properyKeyArray objectAtIndex:i], [properyValArray objectAtIndex:i]]];
+    }
+    NSString *properysStr = [NSString stringWithString:properysMuStr];
+    item.properyStr = properysStr;
+    item.imagefull = [commodityDetail.imgStrList objectAtIndex:0];
+    item.price = commodityDetail.price;
+    item.number = 1;
+    item.ischeck = @"1";
+    item.subtotal = commodityDetail.price;
+    item.shopId = commodityDetail.shopId;
+    item.shopName = commodityDetail.shopName;
+    NSMutableArray *commodityArray = [[NSMutableArray alloc] init];
+    [commodityArray addObject:item];
+    
+    ConfirmationView *confirmationView = [[ConfirmationView alloc] init];
+    confirmationView.commodityItems = commodityArray;
+    [self.navigationController pushViewController:confirmationView animated:YES];
+}
 @end

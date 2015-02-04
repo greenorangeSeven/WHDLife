@@ -12,7 +12,6 @@
 {
     NSMutableArray *shopData;
     float total;
-    UILabel *noDataLabel;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

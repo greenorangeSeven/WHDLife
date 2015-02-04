@@ -14,6 +14,9 @@
 #import "OrderCommodityVO.h"
 #import "NSString+STRegex.h"
 #import "MyOrderView.h"
+#import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
+#import "FMDatabaseQueue.h"
 
 @interface ConfirmationView ()
 {
@@ -269,11 +272,26 @@
     }
     else
     {
+        //删除购入车已选商品
+        FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
+        if (![database open]) {
+            NSLog(@"Open database failed");
+            return;
+        }
+        if (![database tableExists:@"shoppingcar"]) {
+            [database executeUpdate:createshoppingcar];
+        }
+        BOOL detele = [database executeUpdate:@"delete from shoppingcar where ischeck = '1'"];
+        [database close];
         [Tool showCustomHUD:@"下单成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
         [self.navigationController popViewControllerAnimated:YES];
-        MyOrderView *myOrder = [[MyOrderView alloc] init];
-        [self.navigationController pushViewController:myOrder animated:YES];
-        
+        if (self.fromShopCar) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_ShopCarGotoOrder object:nil];
+        }
+        else
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CommodityDetailGotoOrder object:nil];
+        }
     }
 }
 

@@ -44,7 +44,7 @@
     if([self.present isEqualToString:@"present"] == YES)
     {
         UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithTitle: @"关闭" style:UIBarButtonItemStyleBordered target:self action:@selector(closeAction)];
-        leftBtn.tintColor = [Tool getColorForMain];
+        leftBtn.tintColor = [UIColor whiteColor];
         self.navigationItem.leftBarButtonItem = leftBtn;
     }
     

@@ -154,15 +154,15 @@
 
 - (IBAction)basicSettingAction:(id)sender {
     [self.sideViewController hideSideViewController:YES];
-//    BasicSettingView *basicSetting = [[BasicSettingView alloc] init];
-//    basicSetting.hidesBottomBarWhenPushed = YES;
-//    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
-//    [mainTab.mainPageNav pushViewController:basicSetting animated:YES];
-    
-    MySettingView *mysettingView = [[MySettingView alloc] init];
-    mysettingView.hidesBottomBarWhenPushed = YES;
+    BasicSettingView *basicSetting = [[BasicSettingView alloc] init];
+    basicSetting.hidesBottomBarWhenPushed = YES;
     MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
-    [mainTab.mainPageNav pushViewController:mysettingView animated:YES];
+    [mainTab.mainPageNav pushViewController:basicSetting animated:YES];
+    
+//    MySettingView *mysettingView = [[MySettingView alloc] init];
+//    mysettingView.hidesBottomBarWhenPushed = YES;
+//    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
+//    [mainTab.mainPageNav pushViewController:mysettingView animated:YES];
     
 //    MyFrameView *myView = [[MyFrameView alloc] init];
 //    myView.hidesBottomBarWhenPushed = YES;

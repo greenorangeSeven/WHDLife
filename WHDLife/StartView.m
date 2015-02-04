@@ -9,6 +9,8 @@
 #import "StartView.h"
 #import "AppDelegate.h"
 #import "LoginView.h"
+#import "MainTabView.h"
+#import "LeftView.h"
 
 @interface StartView ()
 {
@@ -25,19 +27,19 @@
 #define KSCROLLVIEW_WIDTH [UIScreen mainScreen].applicationFrame.size.width
 #define KSCROLLVIEW_HEIGHT [UIScreen mainScreen].applicationFrame.size.height
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.text = @"设置";
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+    
+    [super viewDidLoad];
+//    self.navigationController.navigationBarHidden = YES;
     self.intoButton.hidden = YES;
     [self buildUI];
     [self createScrollView];
@@ -57,11 +59,11 @@
 #pragma mark createScrollView
 -(void)createScrollView
 {
+    self.scrollView.contentSize=CGSizeMake(KSCROLLVIEW_WIDTH*4, KSCROLLVIEW_HEIGHT);
     self.scrollView.delegate=self;
-    self.scrollView.contentSize=CGSizeMake(KSCROLLVIEW_WIDTH*4, 0);
     for (int i=0; i<4; i++) {
         UIImageView *photoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(i*KSCROLLVIEW_WIDTH, 0, KSCROLLVIEW_WIDTH, KSCROLLVIEW_HEIGHT)];
-        CGRect frame = photoImageView.frame;
+//        CGRect frame = photoImageView.frame;
         NSString *str = @"";
         if (IS_IPHONE_5) {
             str = [NSString stringWithFormat:@"v引导_%d",i+1];
@@ -101,15 +103,38 @@
 
 - (IBAction)enterAction:(id)sender
 {
-    LoginView *loginView = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
-    UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:loginView];
-    AppDelegate *appdele = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    appdele.window.rootViewController = loginNav;
+    if (self.isPush) {
+        AppDelegate *appdele = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        MainTabView *mainViewController=[[MainTabView alloc]initWithNibName:@"MainTabView" bundle:nil];
+        
+        LeftView *leftViewController=[[LeftView alloc]initWithNibName:@"LeftView" bundle:nil];
+        
+        appdele.sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
+        appdele.sideViewController.rootViewController=mainViewController;
+        appdele.sideViewController.leftViewController=leftViewController;
+        
+        appdele.sideViewController.leftViewShowWidth=200;
+        appdele.sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
+        
+        appdele.window.rootViewController = appdele.sideViewController;
+    }
+    else
+    {
+        LoginView *loginView = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
+        UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:loginView];
+        AppDelegate *appdele = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        appdele.window.rootViewController = loginNav;
+    }
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 

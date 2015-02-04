@@ -24,5 +24,9 @@
 
 - (IBAction)addOrDelCollectionAction:(id)sender;
 - (IBAction)confirmationAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *addToShopCarBtn;
+- (IBAction)addToShopCarAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *buyNowBtn;
+- (IBAction)buyNowAction:(id)sender;
 
 @end

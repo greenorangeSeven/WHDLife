@@ -9,6 +9,7 @@
 #import "PayFeeView.h"
 #import "FeeTableView.h"
 #import "CommDetailView.h"
+#import "MyPayBillView.h"
 
 @interface PayFeeView ()
 
@@ -26,6 +27,19 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = UITextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
+    
+    UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 21, 19)];
+    [rBtn addTarget:self action:@selector(myPayAction:) forControlEvents:UIControlEventTouchUpInside];
+    [rBtn setImage:[UIImage imageNamed:@"header_my"] forState:UIControlStateNormal];
+    UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
+    self.navigationItem.rightBarButtonItem = btnMy;
+}
+
+- (void)myPayAction:(id)sender
+{
+    MyPayBillView *payBillView = [[MyPayBillView alloc] init];
+    payBillView.frameView = self.view;
+    [self.navigationController pushViewController:payBillView animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

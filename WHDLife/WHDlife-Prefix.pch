@@ -162,6 +162,8 @@
 #define api_receiveExpress @"express/receiveExpressInfo.htm"
 //下单接口
 #define api_orderSubmit @"order/orderSubmit.htm"
+//更新订单状态为交易关闭
+#define updateOrderClose @"order/updateOrderClose.htm"
 //生成支付宝订单参数
 #define api_createAlipayParams @"payment/createAlipayParams.htm"
 //订单支付成功状态码
@@ -208,6 +210,9 @@
 #define Notification_RefreshGatherTable @"Notification_RefreshGatherTable"
 #define Notification_RefreshHistoryTable @"Notification_RefreshHistoryTable"
 #define Notification_RefreshShopCarTable @"Notification_RefreshShopCarTable"
+#define Notification_CommodityDetailGotoOrder @"Notification_CommodityDetailGotoOrder"
+#define Notification_ShopCarGotoOrder @"Notification_ShopCarGotoOrder"
+
 
 
 #define createshoppingcar @"create table shoppingcar (id integer primary key autoincrement not null, commodityid text, name text, properyStr text,imagefull text,price text,shopid text,shopname text,number int,user_id text,ischeck text)"

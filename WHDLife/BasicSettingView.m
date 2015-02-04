@@ -10,6 +10,7 @@
 #import "SDImageCache.h"
 #import "AppDelegate.h"
 #import "YRSideViewController.h"
+#import "StartView.h"
 
 @interface BasicSettingView ()
 
@@ -94,5 +95,13 @@
 - (IBAction)clearCacheAction:(id)sender {
     [[SDImageCache sharedImageCache] clearDisk];
     [Tool showCustomHUD:@"清理中..." andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:3];
+    [self.clearCacheBtn setTitle:@"清理图片缓存(0.00K)" forState:UIControlStateNormal];
+}
+
+- (IBAction)pushStartAction:(id)sender {
+    StartView *startView = [[StartView alloc] init];
+    startView.isPush = YES;
+//    [self.navigationController pushViewController:startView animated:YES];
+    [self.navigationController presentViewController:startView animated:YES completion:nil];
 }
 @end

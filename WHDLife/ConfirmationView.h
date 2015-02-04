@@ -11,6 +11,7 @@
 @interface ConfirmationView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
 
 @property (copy, nonatomic) NSMutableArray *commodityItems;
+@property bool fromShopCar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *totalLb;
 

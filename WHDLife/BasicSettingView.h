@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *clearCacheBtn;
 @property (weak, nonatomic) IBOutlet UILabel *pushLb;
 - (IBAction)clearCacheAction:(id)sender;
+- (IBAction)pushStartAction:(id)sender;
 
 @end

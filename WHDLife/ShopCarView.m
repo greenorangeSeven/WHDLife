@@ -15,6 +15,7 @@
 #import "ShopCarCell.h"
 #import "SSCheckBoxView.h"
 #import "ConfirmationView.h"
+#import "MyOrderView.h"
 
 @interface ShopCarView ()
 {
@@ -95,16 +96,14 @@
     }];
     [self.checkAllView addSubview:checkAllCb];
     
-    noDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 320, 44)];
-    noDataLabel.font = [UIFont boldSystemFontOfSize:18];
-    noDataLabel.text = @"暂无商品";
-    noDataLabel.textColor = [UIColor blackColor];
-    noDataLabel.backgroundColor = [UIColor clearColor];
-    noDataLabel.textAlignment = UITextAlignmentCenter;
-    noDataLabel.hidden = YES;
-    [self.view addSubview:noDataLabel];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshed:) name:Notification_RefreshShopCarTable object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoOrder) name:Notification_ShopCarGotoOrder object:nil];
+}
+
+- (void)gotoOrder
+{
+    MyOrderView *myOrder = [[MyOrderView alloc] init];
+    [self.navigationController pushViewController:myOrder animated:YES];
 }
 
 - (void)refreshed:(NSNotification *)notification
@@ -112,7 +111,9 @@
     if(notification.object)
     {
         int row = [(NSString *)notification.object intValue];
-        [shopData removeObjectAtIndex:row];
+        if ([shopData count]>row) {
+            [shopData removeObjectAtIndex:row];
+        }
     }
     //没有商品则不能结算
     if([shopData count] == 0)
@@ -126,7 +127,7 @@
 //取数方法
 - (void)reloadData
 {
-//    self.totalLb.text = @"0.00";
+    //    self.totalLb.text = @"0.00";
     [shopData removeAllObjects];
     total = 0.00;
     FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
@@ -185,98 +186,118 @@
     if (![database tableExists:@"shoppingcar"]) {
         [database executeUpdate:createshoppingcar];
     }
-        FMResultSet* amountSet=[database executeQuery:@"select sum(price * number) amount from shoppingcar where user_id = ? and ischeck = '1'", userInfo.regUserId];
-        if ([amountSet next]) {
-            self.totalLb.text = [NSString stringWithFormat:@"合计:%0.2f", [amountSet doubleForColumn:@"amount"]];
-        }
-        else
-        {
-            self.totalLb.text = @"合计:0.00";
-        }
+    FMResultSet* amountSet=[database executeQuery:@"select sum(price * number) amount from shoppingcar where user_id = ? and ischeck = '1'", userInfo.regUserId];
+    if ([amountSet next]) {
+        self.totalLb.text = [NSString stringWithFormat:@"合计:%0.2f", [amountSet doubleForColumn:@"amount"]];
+    }
+    else
+    {
+        self.totalLb.text = @"合计:0.00";
+    }
     [database close];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [shopData count];
+    if([shopData count] == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return [shopData count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ShopCarCell *cell = [tableView dequeueReusableCellWithIdentifier:ShopCarCellIdentifier];
-    if (!cell) {
-        NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"ShopCarCell" owner:self options:nil];
-        for (NSObject *o in objects) {
-            if ([o isKindOfClass:[ShopCarCell class]]) {
-                cell = (ShopCarCell *)o;
-                break;
+    if ([shopData count] > 0) {
+        ShopCarCell *cell = [tableView dequeueReusableCellWithIdentifier:ShopCarCellIdentifier];
+        if (!cell) {
+            NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"ShopCarCell" owner:self options:nil];
+            for (NSObject *o in objects) {
+                if ([o isKindOfClass:[ShopCarCell class]]) {
+                    cell = (ShopCarCell *)o;
+                    break;
+                }
             }
         }
+        int indexRow = [indexPath row];
+        
+        ShopCar *shopcar = [shopData objectAtIndex:indexRow];
+        cell.shopName.text = shopcar.shopName;
+        cell.subTotalLb.text = [NSString stringWithFormat:@"共 %d 件商品    合计:￥%0.2f", shopcar.commodityCount, shopcar.total];
+        
+        cell.subTotalView.frame = CGRectMake(cell.subTotalView.frame.origin.x, cell.subTotalView.frame.origin.y + ([shopcar.commodityList count] - 1) * 85, cell.subTotalView.frame.size.width, cell.subTotalView.frame.size.height);
+        
+        //初始化商品
+        [cell loadShopCommoditys:shopcar andRow:indexRow];
+        cell.commodityTable.frame = CGRectMake(cell.commodityTable.frame.origin.x, cell.commodityTable.frame.origin.y, cell.commodityTable.frame.size.width, [shopcar.commodityList count] * 85);
+        
+        SSCheckBoxView *cb = [[SSCheckBoxView alloc] initWithFrame:CGRectMake(2, 0, 30, 30) style:kSSCheckBoxViewStyleGlossy checked:shopcar.shopIsCheck];
+        [cb setStateChangedBlock:^(SSCheckBoxView *cbv) {
+            if (cbv.checked) {
+                FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
+                if (![database open]) {
+                    NSLog(@"Open database failed");
+                    return;
+                }
+                if (![database tableExists:@"shoppingcar"]) {
+                    [database executeUpdate:createshoppingcar];
+                }
+                for(ShopCarItem *item in shopcar.commodityList)
+                {
+                    [database executeUpdate:@"update shoppingcar set ischeck = '1' where id= ?", [NSNumber numberWithInt:item.dbid]];
+                    item.ischeck = @"1";
+                }
+                shopcar.shopIsCheck = YES;
+                [database close];
+                [self.tableView reloadData];
+            }
+            else
+            {
+                FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
+                if (![database open]) {
+                    NSLog(@"Open database failed");
+                    return;
+                }
+                if (![database tableExists:@"shoppingcar"]) {
+                    [database executeUpdate:createshoppingcar];
+                }
+                for(ShopCarItem *item in shopcar.commodityList)
+                {
+                    [database executeUpdate:@"update shoppingcar set ischeck = '0' where id= ?", [NSNumber numberWithInt:item.dbid]];
+                    item.ischeck = @"0";
+                }
+                shopcar.shopIsCheck = NO;
+                [database close];
+                [self.tableView reloadData];
+            }
+            [self totalCarMoney];
+        }];
+        
+        [cell addSubview:cb];
+        
+        return cell;
     }
-    int indexRow = [indexPath row];
-    
-    ShopCar *shopcar = [shopData objectAtIndex:indexRow];
-    cell.shopName.text = shopcar.shopName;
-    cell.subTotalLb.text = [NSString stringWithFormat:@"共 %d 件商品    合计:￥%0.2f", shopcar.commodityCount, shopcar.total];
-
-    cell.subTotalView.frame = CGRectMake(cell.subTotalView.frame.origin.x, cell.subTotalView.frame.origin.y + ([shopcar.commodityList count] - 1) * 85, cell.subTotalView.frame.size.width, cell.subTotalView.frame.size.height);
-  
-    //初始化商品
-    [cell loadShopCommoditys:shopcar andRow:indexRow];
-    cell.commodityTable.frame = CGRectMake(cell.commodityTable.frame.origin.x, cell.commodityTable.frame.origin.y, cell.commodityTable.frame.size.width, [shopcar.commodityList count] * 85);
-    
-    SSCheckBoxView *cb = [[SSCheckBoxView alloc] initWithFrame:CGRectMake(2, 0, 30, 30) style:kSSCheckBoxViewStyleGlossy checked:shopcar.shopIsCheck];
-    [cb setStateChangedBlock:^(SSCheckBoxView *cbv) {
-        if (cbv.checked) {
-            FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
-            if (![database open]) {
-                NSLog(@"Open database failed");
-                return;
-            }
-            if (![database tableExists:@"shoppingcar"]) {
-                [database executeUpdate:createshoppingcar];
-            }
-            for(ShopCarItem *item in shopcar.commodityList)
-            {
-                [database executeUpdate:@"update shoppingcar set ischeck = '1' where id= ?", [NSNumber numberWithInt:item.dbid]];
-                item.ischeck = @"1";
-            }
-            shopcar.shopIsCheck = YES;
-            [database close];
-            [self.tableView reloadData];
-        }
-        else
-        {
-            FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
-            if (![database open]) {
-                NSLog(@"Open database failed");
-                return;
-            }
-            if (![database tableExists:@"shoppingcar"]) {
-                [database executeUpdate:createshoppingcar];
-            }
-            for(ShopCarItem *item in shopcar.commodityList)
-            {
-                [database executeUpdate:@"update shoppingcar set ischeck = '0' where id= ?", [NSNumber numberWithInt:item.dbid]];
-                item.ischeck = @"0";
-            }
-            shopcar.shopIsCheck = NO;
-            [database close];
-            [self.tableView reloadData];
-        }
-        [self totalCarMoney];
-    }];
-    
-    [cell addSubview:cb];
-    
-    return cell;
+    else
+    {
+        return [[DataSingleton Instance] getLoadMoreCell:tableView andIsLoadOver:NO andLoadOverString:@"暂无商品" andLoadingString:@"暂无商品" andIsLoading:NO];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int indexRow = [indexPath row];
-    ShopCar *shopcar = [shopData objectAtIndex:indexRow];
-    return 152 + (([shopcar.commodityList count] -1) * 85);
+    if([shopData count] == 0)
+    {
+        return 40;
+    }
+    else
+    {
+        int indexRow = [indexPath row];
+        ShopCar *shopcar = [shopData objectAtIndex:indexRow];
+        return 152 + (([shopcar.commodityList count] -1) * 85);
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -310,7 +331,6 @@
     [database executeUpdate:@"update shoppingcar set ischeck = '0'"];
     [database close];
     
-    noDataLabel.hidden = YES;
     [self reloadData];
     if (checkAllCb) {
         checkAllCb.checked = NO;
@@ -320,14 +340,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)balanceAction:(id)sender {
     NSMutableArray *commodityArray = [[NSMutableArray alloc] init];
@@ -345,6 +365,7 @@
     
     ConfirmationView *confirmationView = [[ConfirmationView alloc] init];
     confirmationView.commodityItems = commodityArray;
+    confirmationView.fromShopCar = YES;
     [self.navigationController pushViewController:confirmationView animated:YES];
 }
 @end

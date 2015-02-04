@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *intoButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property bool isPush;
+
 - (IBAction)enterAction:(id)sender;
 
 @end

@@ -9,13 +9,17 @@
 #import "FriendsDetailView.h"
 #import "FriendsReplyCell.h"
 #import "FriendsOtherView.h"
+#import "MWPhotoBrowser.h"
 
-@interface FriendsDetailView ()<UITableViewDataSource,UITableViewDelegate>
+@interface FriendsDetailView ()<UITableViewDataSource,UITableViewDelegate, MWPhotoBrowserDelegate>
 {
     FriendsInfo *friendsInfo;
     UserInfo *userInfo;
     MBProgressHUD *hud;
+    NSMutableArray *_photos;
 }
+
+@property (nonatomic, retain) NSMutableArray *photos;
 
 @end
 
@@ -118,6 +122,8 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goFriendsOther:)];
     [self.avatar addGestureRecognizer:recognizer];
     [self.topicImg sd_setImageWithURL:[NSURL URLWithString:friendsInfo.imgUrlList[0]] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
+    UITapGestureRecognizer *contactManTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toPhotoList)];
+    [self.topicImg addGestureRecognizer:contactManTap];
     self.contentLabel.text = friendsInfo.content;
     //时间
     self.timeLabel.text = [Tool intervalSinceNow:[Tool TimestampToDateStr:friendsInfo.starttimeStamp andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
@@ -132,10 +138,10 @@
     }
     //昵称
     self.nickNameLabel.text = nickname;
-    if(friendsInfo.photoFull.length > 0)
-    {
+//    if(friendsInfo.photoFull.length > 0)
+//    {
         [self.avatar sd_setImageWithURL:[NSURL URLWithString:friendsInfo.photoFull] placeholderImage:[UIImage imageNamed:@"userface.png"]];
-    }
+//    }
     
     [self.my_avatar sd_setImageWithURL:[NSURL URLWithString:userInfo.photoFull] placeholderImage:[UIImage imageNamed:@"userface.png"]];
     
@@ -157,6 +163,40 @@
         [self.attentionBtn setImage:[UIImage imageNamed:@"friends_detail_focus_press"] forState:UIControlStateNormal];
     }
     [self.commentTableView reloadData];
+}
+
+//顶部图片滑动点击委托协议实现事件
+- (void)toPhotoList
+{
+    if ([self.photos count] == 0) {
+        NSMutableArray *photos = [[NSMutableArray alloc] init];
+        for (NSString *d in friendsInfo.imgUrlList) {
+            MWPhoto * photo = [MWPhoto photoWithURL:[NSURL URLWithString:d]];
+            [photos addObject:photo];
+        }
+        self.photos = photos;
+    }
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = YES;
+    browser.displayNavArrows = NO;//左右分页切换,默认否
+    browser.displaySelectionButtons = NO;//是否显示选择按钮在图片上,默认否
+    browser.alwaysShowControls = YES;//控制条件控件 是否显示,默认否
+    browser.zoomPhotosToFill = NO;//是否全屏,默认是
+    //    browser.wantsFullScreenLayout = YES;//是否全屏
+    [browser setCurrentPhotoIndex:0];
+    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController pushViewController:browser animated:YES];
+}
+
+//MWPhotoBrowserDelegate委托事件
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

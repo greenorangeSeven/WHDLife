@@ -226,6 +226,9 @@
                 cell.closeOrderBtn.hidden = YES;
             }
             
+            cell.closeOrderBtn.tag = indexRow;
+            [cell.closeOrderBtn addTarget:self action:@selector(doClose:) forControlEvents:UIControlEventTouchUpInside];
+            
             return cell;
         }
         else
@@ -443,6 +446,57 @@
     order.stateName = @"已付款";
     [self.tableView reloadData];
     currentIndex = 0;
+}
+
+- (void)doClose:(UIButton *)sender
+{
+    //如果有网络连接
+    if ([UserModel Instance].isNetworkRunning) {
+        int row = sender.tag;
+        MyOrder *order = [orders objectAtIndex:sender.tag];
+        //关闭交易
+        NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+        [param setValue:order.orderId forKey:@"orderId"];
+        NSString *updateOrderCloseUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, updateOrderClose] params:param];
+        [[AFOSCClient sharedClient]getPath:updateOrderCloseUrl parameters:Nil
+                                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                       @try {
+                                           NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                           NSError *error;
+                                           NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                           
+                                           NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                           if ([state isEqualToString:@"0000"] == NO) {
+                                               UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
+                                                                                            message:[[json objectForKey:@"header"] objectForKey:@"msg"]
+                                                                                           delegate:nil
+                                                                                  cancelButtonTitle:@"确定"
+                                                                                  otherButtonTitles:nil];
+                                               [av show];
+                                               return;
+                                           }
+                                           else
+                                           {
+                                               [orders removeObjectAtIndex:row];
+                                               [self.tableView reloadData];
+                                               [Tool showCustomHUD:@"交易取消" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                                           }
+                                       }
+                                       @catch (NSException *exception) {
+                                           [NdUncaughtExceptionHandler TakeException:exception];
+                                       }
+                                       @finally {
+                                           
+                                       }
+                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                       if ([UserModel Instance].isNetworkRunning == NO) {
+                                           return;
+                                       }
+                                       if ([UserModel Instance].isNetworkRunning) {
+                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                       }
+                                   }];
+    }
 }
 
 @end

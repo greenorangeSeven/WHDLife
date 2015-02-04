@@ -235,7 +235,7 @@
 		1454CEEE1A558441003AA21E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1454CEED1A558441003AA21E /* UIKit.framework */; };
 		1454CF321A5771A9003AA21E /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1454CF301A5771A9003AA21E /* libbaidumapapi.a */; };
 		1454CF331A5771A9003AA21E /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1454CF311A5771A9003AA21E /* mapapi.bundle */; };
-		1454CF381A577B54003AA21E /* StartView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1454CF361A577B54003AA21E /* StartView.mm */; };
+		1454CF381A577B54003AA21E /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CF361A577B54003AA21E /* StartView.m */; };
 		1454CF391A577B54003AA21E /* StartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1454CF371A577B54003AA21E /* StartView.xib */; };
 		1454CF3F1A5788A8003AA21E /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CF3D1A5788A8003AA21E /* LoginView.m */; };
 		1454CF401A5788A8003AA21E /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1454CF3E1A5788A8003AA21E /* LoginView.xib */; };
@@ -997,7 +997,7 @@
 		1454CF301A5771A9003AA21E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		1454CF311A5771A9003AA21E /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		1454CF351A577B54003AA21E /* StartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartView.h; sourceTree = "<group>"; };
-		1454CF361A577B54003AA21E /* StartView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartView.mm; sourceTree = "<group>"; };
+		1454CF361A577B54003AA21E /* StartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartView.m; sourceTree = "<group>"; };
 		1454CF371A577B54003AA21E /* StartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartView.xib; sourceTree = "<group>"; };
 		1454CF3C1A5788A8003AA21E /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		1454CF3D1A5788A8003AA21E /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
@@ -1626,7 +1626,7 @@
 				1454CC951A557E3A003AA21E /* AppDelegate.h */,
 				1454CC961A557E3A003AA21E /* AppDelegate.m */,
 				1454CF351A577B54003AA21E /* StartView.h */,
-				1454CF361A577B54003AA21E /* StartView.mm */,
+				1454CF361A577B54003AA21E /* StartView.m */,
 				1454CF371A577B54003AA21E /* StartView.xib */,
 				14A013D41A5B8CD40041FBE3 /* TransitionView.h */,
 				14A013D51A5B8CD40041FBE3 /* TransitionView.m */,
@@ -3237,7 +3237,7 @@
 				1454CE8C1A557E77003AA21E /* SDImageCache.m in Sources */,
 				1454CE971A557E77003AA21E /* UIImageView+HighlightedWebCache.m in Sources */,
 				1454CE9D1A557E77003AA21E /* NSObject+RMCopyable.m in Sources */,
-				1454CF381A577B54003AA21E /* StartView.mm in Sources */,
+				1454CF381A577B54003AA21E /* StartView.m in Sources */,
 				04B0F5821A7B6029002ACAFB /* FriendsReplyCell.m in Sources */,
 				1454CE9C1A557E77003AA21E /* NSObject+RMArchivable.m in Sources */,
 				1454CE7D1A557E77003AA21E /* PSTCollectionViewCell.m in Sources */,
@@ -3315,8 +3315,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3336,7 +3336,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
+				PROVISIONING_PROFILE = "a8b893ef-33ff-487f-bf13-58ee3844f531";
 				SDKROOT = iphoneos8.1;
 			};
 			name = Debug;
@@ -3359,8 +3359,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3373,7 +3373,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
+				PROVISIONING_PROFILE = "a8b893ef-33ff-487f-bf13-58ee3844f531";
 				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = YES;
 			};

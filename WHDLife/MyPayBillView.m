@@ -21,6 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.text = @"我的缴费";
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+    
     userInfo = [[UserModel Instance] getUserInfo];
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.frameView.frame.size.height);
     
