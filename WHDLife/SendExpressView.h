@@ -23,4 +23,9 @@
 - (IBAction)cameraAction:(id)sender;
 - (IBAction)submitAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *jjrTf;
+@property (weak, nonatomic) IBOutlet UITextField *jjdhTf;
+@property (weak, nonatomic) IBOutlet UITextField *sjrTf;
+@property (weak, nonatomic) IBOutlet UITextField *sjdhTf;
+
 @end

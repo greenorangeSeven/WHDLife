@@ -369,6 +369,8 @@
 		14B8D3B01A67A16B000A58D1 /* CommentExpressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B8D3AE1A67A16B000A58D1 /* CommentExpressView.xib */; };
 		14B8D3B41A67F20D000A58D1 /* BasicSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8D3B21A67F20D000A58D1 /* BasicSettingView.m */; };
 		14B8D3B51A67F20D000A58D1 /* BasicSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B8D3B31A67F20D000A58D1 /* BasicSettingView.xib */; };
+		14B93DDB1A83098D00B9E51C /* OpinionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B93DD91A83098D00B9E51C /* OpinionView.m */; };
+		14B93DDC1A83098D00B9E51C /* OpinionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B93DDA1A83098D00B9E51C /* OpinionView.xib */; };
 		14C427AC1A6220A9004E919D /* RepairDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C427AA1A6220A9004E919D /* RepairDetailView.m */; };
 		14C427AD1A6220A9004E919D /* RepairDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C427AB1A6220A9004E919D /* RepairDetailView.xib */; };
 		14C427B81A622329004E919D /* RepairBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C427AF1A622329004E919D /* RepairBasic.m */; };
@@ -1195,6 +1197,9 @@
 		14B8D3B11A67F20D000A58D1 /* BasicSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicSettingView.h; sourceTree = "<group>"; };
 		14B8D3B21A67F20D000A58D1 /* BasicSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicSettingView.m; sourceTree = "<group>"; };
 		14B8D3B31A67F20D000A58D1 /* BasicSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicSettingView.xib; sourceTree = "<group>"; };
+		14B93DD81A83098D00B9E51C /* OpinionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpinionView.h; sourceTree = "<group>"; };
+		14B93DD91A83098D00B9E51C /* OpinionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpinionView.m; sourceTree = "<group>"; };
+		14B93DDA1A83098D00B9E51C /* OpinionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpinionView.xib; sourceTree = "<group>"; };
 		14C427A91A6220A9004E919D /* RepairDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairDetailView.h; sourceTree = "<group>"; };
 		14C427AA1A6220A9004E919D /* RepairDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairDetailView.m; sourceTree = "<group>"; };
 		14C427AB1A6220A9004E919D /* RepairDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairDetailView.xib; sourceTree = "<group>"; };
@@ -2431,6 +2436,9 @@
 				14A849121A7725F10054D8BA /* InviteRegisterView.h */,
 				14A849131A7725F10054D8BA /* InviteRegisterView.m */,
 				14A849141A7725F10054D8BA /* InviteRegisterView.xib */,
+				14B93DD81A83098D00B9E51C /* OpinionView.h */,
+				14B93DD91A83098D00B9E51C /* OpinionView.m */,
+				14B93DDA1A83098D00B9E51C /* OpinionView.xib */,
 			);
 			name = SettingPage;
 			sourceTree = "<group>";
@@ -2911,6 +2919,7 @@
 				1495D6891A6608150059FB47 /* cb_mono_off@2x.png in Resources */,
 				1495D6161A63742F0059FB47 /* MySuitTableView.xib in Resources */,
 				14A013D81A5B8CD40041FBE3 /* TransitionView.xib in Resources */,
+				14B93DDC1A83098D00B9E51C /* OpinionView.xib in Resources */,
 				1495D6941A6609430059FB47 /* cd_my_on.png in Resources */,
 				14504B111A5CCC3F006B9EC7 /* ActivityTableView.xib in Resources */,
 				1495D5FE1A635D3B0059FB47 /* NoticeNewCell.xib in Resources */,
@@ -3216,6 +3225,7 @@
 				1454CE7C1A557E77003AA21E /* PSTCollectionView.m in Sources */,
 				14C6B4621A6B8121004E4F10 /* ShopCarView.m in Sources */,
 				1454CE4B1A557E77003AA21E /* ASIInputStream.m in Sources */,
+				14B93DDB1A83098D00B9E51C /* OpinionView.m in Sources */,
 				1454CE921A557E77003AA21E /* SDWebImagePrefetcher.m in Sources */,
 				1454CE701A557E77003AA21E /* KxMenu.m in Sources */,
 				1454CE2D1A557E77003AA21E /* AFJSONUtilities.m in Sources */,

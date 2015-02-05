@@ -105,7 +105,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     _titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height-45, 320, 45)];
     _titleLb.font = [UIFont boldSystemFontOfSize:14];
     
-    _titleLb.backgroundColor = [UIColor colorWithRed:0.0/255 green:0.0/255 blue:0.0/255 alpha:0.5];
+    _titleLb.backgroundColor = [UIColor colorWithRed:0.0/255 green:0.0/255 blue:0.0/255 alpha:0.02];
     _titleLb.textColor = [UIColor whiteColor];
     [_titleLb setNumberOfLines:2];
     _titleLb.textAlignment = NSTextAlignmentLeft;

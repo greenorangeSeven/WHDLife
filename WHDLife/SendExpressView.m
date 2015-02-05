@@ -373,17 +373,38 @@
     NSString *bournStr = self.bournTf.text;
     NSString *directionStr = self.directionTf.text;
     NSString *gatherDateStr = self.gatherDateTf.text;
-
+    
+    NSString *jjrStr = self.jjrTf.text;
+    NSString *jjdhStr = self.jjdhTf.text;
+    NSString *sjrStr = self.sjrTf.text;
+    NSString *sjdhStr = self.sjdhTf.text;
+    
     if ([describeStr length] == 0) {
         [Tool showCustomHUD:@"请输入描述" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
-    if ([bournStr length] == 0) {
-        [Tool showCustomHUD:@"请输入目的地" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
+    if ([jjrStr length] == 0) {
+        [Tool showCustomHUD:@"请输入寄件人" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    if ([jjdhStr length] == 0) {
+        [Tool showCustomHUD:@"请输入寄件人电话" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
     if ([directionStr length] == 0) {
-        [Tool showCustomHUD:@"请输入收件地" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
+        [Tool showCustomHUD:@"请输入寄件人地址" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    if ([sjrStr length] == 0) {
+        [Tool showCustomHUD:@"请输入收件人" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    if ([sjdhStr length] == 0) {
+        [Tool showCustomHUD:@"请输入收件人电话" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    if ([bournStr length] == 0) {
+        [Tool showCustomHUD:@"请输入收件人地址" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
     if ([gatherDateStr length] == 0) {
@@ -402,6 +423,12 @@
     [param setValue:expressCompanyId forKey:@"expressCompanyId"];
     [param setValue:directionStr forKey:@"receivesPlace"];
     [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    
+    [param setValue:jjrStr forKey:@"sendUserName"];
+    [param setValue:jjdhStr forKey:@"mobileNo"];
+    [param setValue:sjrStr forKey:@"expressUserName"];
+    [param setValue:sjdhStr forKey:@"receivesMobileNo"];
+    
     NSString *addExpressoutInfoSign = [Tool serializeSign:[NSString stringWithFormat:@"%@%@", api_base_url, api_addExpressoutInfo] params:param];
     NSString *addExpressoutInfoUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_addExpressoutInfo];
     
@@ -418,6 +445,12 @@
     [request setPostValue:expressCompanyId forKey:@"expressCompanyId"];
     [request setPostValue:directionStr forKey:@"receivesPlace"];
     [request setPostValue:userInfo.regUserId forKey:@"regUserId"];
+    
+    [request setPostValue:jjrStr forKey:@"sendUserName"];
+    [request setPostValue:jjdhStr forKey:@"mobileNo"];
+    [request setPostValue:sjrStr forKey:@"expressUserName"];
+    [request setPostValue:sjdhStr forKey:@"receivesMobileNo"];
+    
     if (self.cameraIv.image) {
         [request addData:UIImageJPEGRepresentation(self.cameraIv.image, 0.8f) withFileName:@"img.jpg" andContentType:@"image/jpeg" forKey:@"pic"];
     }
@@ -471,6 +504,12 @@
         self.bournTf.text = @"";
         self.directionTf.text = @"";
         self.gatherDateTf.text = @"";
+        
+        self.jjrTf.text = @"";
+        self.jjdhTf.text = @"";
+        self.sjrTf.text = @"";
+        self.sjdhTf.text = @"";
+        
         self.submitBtn.enabled = YES;
         [Tool showCustomHUD:@"预约成功" andView:self.frameView  andImage:@"37x-Failure.png" andAfterDelay:2];
     }

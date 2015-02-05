@@ -38,7 +38,7 @@
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.text = @"邀请码注册";
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [Tool getColorForMain];
+    titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = UITextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
     
@@ -403,6 +403,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.hidden = NO;
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"返回";
+    self.navigationItem.backBarButtonItem = backItem;
+    
 }
 
 /*

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "YRSideViewController.h"
 #import "StartView.h"
+#import "OpinionView.h"
 
 @interface BasicSettingView ()
 
@@ -101,7 +102,11 @@
 - (IBAction)pushStartAction:(id)sender {
     StartView *startView = [[StartView alloc] init];
     startView.isPush = YES;
-//    [self.navigationController pushViewController:startView animated:YES];
     [self.navigationController presentViewController:startView animated:YES completion:nil];
+}
+
+- (IBAction)opinionAction:(id)sender {
+    OpinionView *opinion = [[OpinionView alloc] init];
+    [self.navigationController pushViewController:opinion animated:YES];
 }
 @end

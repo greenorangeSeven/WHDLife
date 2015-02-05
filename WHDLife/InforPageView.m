@@ -25,7 +25,13 @@
     [super viewDidLoad];
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    titleLabel.text = @"资讯";
+    if (self.isVisitor) {
+        titleLabel.text = @"游客浏览";
+    }
+    else
+    {
+        titleLabel.text = @"资讯";
+    }
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = UITextAlignmentCenter;
@@ -37,10 +43,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    self.navigationController.navigationBar.hidden = NO;
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"返回";
     self.navigationItem.backBarButtonItem = backItem;
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];

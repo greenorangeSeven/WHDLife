@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "ActivityInitiateView.h"
 #import "ResetPassWordView.h"
+#import "InforPageView.h"
 
 @interface LoginView ()
 
@@ -168,11 +169,11 @@
     RegisterStep1View *register1 = [[RegisterStep1View alloc] init];
     [self.navigationController pushViewController:register1 animated:YES];
 }
+
 - (IBAction)visitorAction:(id)sender {
-    
-//    ActivityInitiateView *register1 = [[ActivityInitiateView alloc] init];
-//    [self.navigationController pushViewController:register1 animated:YES];
-    
-//    [[SliderViewController sharedSliderController] showLeftViewController];
+    InforPageView *visitor = [[InforPageView alloc] init];
+    visitor.isVisitor = YES;
+    [self.navigationController pushViewController:visitor animated:YES];
 }
+
 @end

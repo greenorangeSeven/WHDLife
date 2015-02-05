@@ -10,6 +10,8 @@
 
 @interface InforPageView : UIViewController
 
+@property bool isVisitor;
+
 //生活信息
 - (IBAction)lifeInfoAction:(id)sender;
 //办事指南

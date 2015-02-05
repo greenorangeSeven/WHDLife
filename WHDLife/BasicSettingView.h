@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *pushLb;
 - (IBAction)clearCacheAction:(id)sender;
 - (IBAction)pushStartAction:(id)sender;
+- (IBAction)opinionAction:(id)sender;
 
 @end
