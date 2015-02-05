@@ -55,5 +55,57 @@
 */
 
 - (IBAction)submitAction:(id)sender {
+    //如果有网络连接
+    if ([UserModel Instance].isNetworkRunning) {
+        NSString *contentStr = self.contentTv.text;
+        if ([contentStr length] == 0) {
+            [Tool showCustomHUD:@"请输入内容" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+            return;
+        }
+        self.submitBtn.enabled = NO;
+        UserInfo *userInfo = [[UserModel Instance] getUserInfo];
+        NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+        [param setValue:contentStr forKey:@"content"];
+        [param setValue:userInfo.regUserId forKey:@"regUserId"];
+        NSString *addAfterFellUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_addAfterFell] params:param];
+        [[AFOSCClient sharedClient]getPath:addAfterFellUrl parameters:Nil
+                                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                       @try {
+                                           NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                           NSError *error;
+                                           NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                           
+                                           NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                           if ([state isEqualToString:@"0000"] == NO) {
+                                               UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
+                                                                                            message:[[json objectForKey:@"header"] objectForKey:@"msg"]
+                                                                                           delegate:nil
+                                                                                  cancelButtonTitle:@"确定"
+                                                                                  otherButtonTitles:nil];
+                                               [av show];
+                                               return;
+                                           }
+                                           else
+                                           {
+                                               [Tool showCustomHUD:@"提交成功" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                                               self.contentTv.text = @"";
+                                           }
+                                           self.submitBtn.enabled = YES;
+                                       }
+                                       @catch (NSException *exception) {
+                                           [NdUncaughtExceptionHandler TakeException:exception];
+                                       }
+                                       @finally {
+                                           
+                                       }
+                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                       if ([UserModel Instance].isNetworkRunning == NO) {
+                                           return;
+                                       }
+                                       if ([UserModel Instance].isNetworkRunning) {
+                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                       }
+                                   }];
+    }
 }
 @end

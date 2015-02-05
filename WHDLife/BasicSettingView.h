@@ -16,5 +16,6 @@
 - (IBAction)clearCacheAction:(id)sender;
 - (IBAction)pushStartAction:(id)sender;
 - (IBAction)opinionAction:(id)sender;
+- (IBAction)aboutAction:(id)sender;
 
 @end

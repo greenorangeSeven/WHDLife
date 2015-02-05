@@ -12,6 +12,7 @@
 #import "YRSideViewController.h"
 #import "StartView.h"
 #import "OpinionView.h"
+#import "CommDetailView.h"
 
 @interface BasicSettingView ()
 
@@ -108,5 +109,14 @@
 - (IBAction)opinionAction:(id)sender {
     OpinionView *opinion = [[OpinionView alloc] init];
     [self.navigationController pushViewController:opinion animated:YES];
+}
+
+- (IBAction)aboutAction:(id)sender {
+    NSString *aboutHtm = [NSString stringWithFormat:@"%@%@", api_base_urlnotport, htm_about];
+    CommDetailView *aboutView = [[CommDetailView alloc] init];
+    aboutView.titleStr = @"关于";
+    aboutView.urlStr = aboutHtm;
+    aboutView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:aboutView animated:YES];
 }
 @end

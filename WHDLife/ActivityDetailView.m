@@ -34,8 +34,6 @@
     titleLabel.textAlignment = UITextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
     
-    
-    
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     
     userInfo = [[UserModel Instance] getUserInfo];

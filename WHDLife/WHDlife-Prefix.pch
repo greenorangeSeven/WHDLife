@@ -166,6 +166,8 @@
 #define updateOrderClose @"order/updateOrderClose.htm"
 //生成支付宝订单参数
 #define api_createAlipayParams @"payment/createAlipayParams.htm"
+//用后感
+#define api_addAfterFell @"suit/addAfterFell.htm"
 //订单支付成功状态码
 #define ORDER_PAY_OK @"9000"
 
