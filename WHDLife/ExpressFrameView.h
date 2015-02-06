@@ -10,6 +10,7 @@
 #import "GatherTableView.h"
 #import "SendExpressView.h"
 #import "HistoryExpressView.h"
+#import "ErrorView.h"
 
 @interface ExpressFrameView : UIViewController
 
@@ -28,5 +29,6 @@
 @property (strong, nonatomic) GatherTableView *gatherView;
 @property (strong, nonatomic) SendExpressView *sendView;
 @property (strong, nonatomic) HistoryExpressView *historyView;
+@property (strong, nonatomic) ErrorView *errorView;
 
 @end

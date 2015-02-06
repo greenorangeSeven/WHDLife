@@ -78,8 +78,15 @@
     [self.item2Btn setBackgroundImage:nil forState:UIControlStateNormal];
     [self.item3btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.item3btn setBackgroundImage:nil forState:UIControlStateNormal];
+    if (self.gatherView == nil) {
+        self.gatherView = [[GatherTableView alloc] init];
+        self.gatherView.frameView = self.mainView;
+        [self addChildViewController:self.gatherView];
+        [self.mainView addSubview:self.gatherView.view];
+    }
     self.gatherView.view.hidden = NO;
-    self.sendView.view.hidden = YES;
+//    self.sendView.view.hidden = YES;
+    self.errorView.view.hidden = YES;
     self.historyView.view.hidden = YES;
 }
 
@@ -90,14 +97,23 @@
     [self.item2Btn setBackgroundImage:[UIImage imageNamed:@"activity_tab_bg"] forState:UIControlStateNormal];
     [self.item3btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.item3btn setBackgroundImage:nil forState:UIControlStateNormal];
-    if (self.sendView == nil) {
-        self.sendView = [[SendExpressView alloc] init];
-        self.sendView.frameView = self.mainView;
-        [self addChildViewController:self.sendView];
-        [self.mainView addSubview:self.sendView.view];
+//    if (self.sendView == nil) {
+//        self.sendView = [[SendExpressView alloc] init];
+//        self.sendView.frameView = self.mainView;
+//        [self addChildViewController:self.sendView];
+//        [self.mainView addSubview:self.sendView.view];
+//    }
+//    self.gatherView.view.hidden = YES;
+//    self.sendView.view.hidden = NO;
+//    self.historyView.view.hidden = YES;
+    if (self.errorView == nil) {
+        self.errorView = [[ErrorView alloc] init];
+        self.errorView.frameView = self.mainView;
+        [self addChildViewController:self.errorView];
+        [self.mainView addSubview:self.errorView.view];
     }
     self.gatherView.view.hidden = YES;
-    self.sendView.view.hidden = NO;
+    self.errorView.view.hidden = NO;
     self.historyView.view.hidden = YES;
 }
 
@@ -115,7 +131,8 @@
         [self.mainView addSubview:self.historyView.view];
     }
     self.gatherView.view.hidden = YES;
-    self.sendView.view.hidden = YES;
+//    self.sendView.view.hidden = YES;
+    self.errorView.view.hidden = YES;
     self.historyView.view.hidden = NO;
 }
 

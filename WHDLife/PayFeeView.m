@@ -10,6 +10,7 @@
 #import "FeeTableView.h"
 #import "CommDetailView.h"
 #import "MyPayBillView.h"
+#import "ErrorView.h"
 
 @interface PayFeeView ()
 
@@ -68,10 +69,15 @@
 */
 
 - (IBAction)parkFeeAction:(id)sender {
-    FeeTableView *feeTableView = [[FeeTableView alloc] init];
-    feeTableView.titleStr = @"停车费账单";
-    feeTableView.typeId = @"1";
-    [self.navigationController pushViewController:feeTableView animated:YES];
+    
+//    FeeTableView *feeTableView = [[FeeTableView alloc] init];
+//    feeTableView.titleStr = @"停车费账单";
+//    feeTableView.typeId = @"1";
+//    [self.navigationController pushViewController:feeTableView animated:YES];
+    //封板保留
+    ErrorView *errorView = [[ErrorView alloc] init];
+    errorView.titleStr = @"停车费账单";
+    [self.navigationController pushViewController:errorView animated:YES];
 }
 
 - (IBAction)wuyeFeeAction:(id)sender {
@@ -82,10 +88,14 @@
 }
 
 - (IBAction)ranqiFeeAction:(id)sender {
-    FeeTableView *feeTableView = [[FeeTableView alloc] init];
-    feeTableView.titleStr = @"燃气费账单";
-    feeTableView.typeId = @"2";
-    [self.navigationController pushViewController:feeTableView animated:YES];
+//    FeeTableView *feeTableView = [[FeeTableView alloc] init];
+//    feeTableView.titleStr = @"燃气费账单";
+//    feeTableView.typeId = @"2";
+//    [self.navigationController pushViewController:feeTableView animated:YES];
+    //封板保留
+    ErrorView *errorView = [[ErrorView alloc] init];
+    errorView.titleStr = @"燃气费账单";
+    [self.navigationController pushViewController:errorView animated:YES];
 }
 
 - (IBAction)ydFeeAction:(id)sender {

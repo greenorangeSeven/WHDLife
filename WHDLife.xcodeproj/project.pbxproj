@@ -64,6 +64,8 @@
 		1412F15B1A5E6A6F005D1735 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1412F15A1A5E6A6F005D1735 /* Security.framework */; };
 		14195E301A5A32D1000C3069 /* MainPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14195E2E1A5A32D1000C3069 /* MainPageView.m */; };
 		14195E311A5A32D1000C3069 /* MainPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14195E2F1A5A32D1000C3069 /* MainPageView.xib */; };
+		1428DD821A845FDB00658CA0 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1428DD801A845FDB00658CA0 /* ErrorView.m */; };
+		1428DD831A845FDB00658CA0 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1428DD811A845FDB00658CA0 /* ErrorView.xib */; };
 		14346CF51A7B65F900BE6455 /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14346CF41A7B65F900BE6455 /* KeyboardManager.framework */; };
 		143895FC1A787F48008B8E61 /* ExpressCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 143895FB1A787F48008B8E61 /* ExpressCompany.m */; };
 		143896071A78CF03008B8E61 /* MyOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 143896061A78CF03008B8E61 /* MyOrder.m */; };
@@ -618,6 +620,9 @@
 		14195E2D1A5A32D1000C3069 /* MainPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageView.h; sourceTree = "<group>"; };
 		14195E2E1A5A32D1000C3069 /* MainPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageView.m; sourceTree = "<group>"; };
 		14195E2F1A5A32D1000C3069 /* MainPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPageView.xib; sourceTree = "<group>"; };
+		1428DD7F1A845FDB00658CA0 /* ErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorView.h; sourceTree = "<group>"; };
+		1428DD801A845FDB00658CA0 /* ErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorView.m; sourceTree = "<group>"; };
+		1428DD811A845FDB00658CA0 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		14346CF41A7B65F900BE6455 /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 		143895FA1A787F48008B8E61 /* ExpressCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressCompany.h; sourceTree = "<group>"; };
 		143895FB1A787F48008B8E61 /* ExpressCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressCompany.m; sourceTree = "<group>"; };
@@ -1641,6 +1646,9 @@
 				1495D6011A635DA90059FB47 /* CommDetailView.h */,
 				1495D6021A635DAA0059FB47 /* CommDetailView.m */,
 				1495D6031A635DAA0059FB47 /* CommDetailView.xib */,
+				1428DD7F1A845FDB00658CA0 /* ErrorView.h */,
+				1428DD801A845FDB00658CA0 /* ErrorView.m */,
+				1428DD811A845FDB00658CA0 /* ErrorView.xib */,
 				1454CC9B1A557E3A003AA21E /* Main.storyboard */,
 				1454CC9E1A557E3A003AA21E /* Images.xcassets */,
 				14195E2C1A5A329A000C3069 /* MainPage */,
@@ -2900,6 +2908,7 @@
 				04B0F5791A7B6029002ACAFB /* FriendsOtherView.xib in Resources */,
 				14A013E31A5BD3270041FBE3 /* InforPageView.xib in Resources */,
 				1495D6001A635D3B0059FB47 /* NoticeOldCell.xib in Resources */,
+				1428DD831A845FDB00658CA0 /* ErrorView.xib in Resources */,
 				14ED96861A73CA8F00EA9404 /* MyPayBillView.xib in Resources */,
 				14B8D39F1A6760D1000A58D1 /* GatherSelectView.xib in Resources */,
 				0405EF401A806D2A00D33A2B /* MyOrderView.xib in Resources */,
@@ -3086,6 +3095,7 @@
 				0405EF241A806B4C00D33A2B /* RSADataVerifier.m in Sources */,
 				14ED96621A71F11000EA9404 /* PurseCell.m in Sources */,
 				14C427C01A622509004E919D /* RepairBasicCell.m in Sources */,
+				1428DD821A845FDB00658CA0 /* ErrorView.m in Sources */,
 				14A848F81A75350F0054D8BA /* ChangeHouseCell.m in Sources */,
 				1454CE991A557E77003AA21E /* UIView+WebCacheOperation.m in Sources */,
 				1454CE941A557E77003AA21E /* UIImage+GIF.m in Sources */,
@@ -3325,8 +3335,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Pan (39TH7G7JYY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3346,7 +3356,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a8b893ef-33ff-487f-bf13-58ee3844f531";
+				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
 				SDKROOT = iphoneos8.1;
 			};
 			name = Debug;
@@ -3369,8 +3379,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Pan (39TH7G7JYY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3383,7 +3393,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "a8b893ef-33ff-487f-bf13-58ee3844f531";
+				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
 				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3395,7 +3405,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WHDLife/IQKeyboardManager",
@@ -3419,7 +3429,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8b893ef-33ff-487f-bf13-58ee3844f531";
+				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
 			};
 			name = Debug;
 		};
@@ -3429,7 +3439,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WHDLife/IQKeyboardManager",
@@ -3453,7 +3463,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8b893ef-33ff-487f-bf13-58ee3844f531";
+				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
 			};
 			name = Release;
 		};

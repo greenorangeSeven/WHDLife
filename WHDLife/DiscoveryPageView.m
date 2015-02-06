@@ -12,6 +12,7 @@
 #import "ExpressFrameView.h"
 #import "CommodityClassView.h"
 #import "CommDetailView.h"
+#import "ErrorView.h"
 
 @interface DiscoveryPageView ()
 
@@ -76,31 +77,46 @@
 
 //团购信息
 - (IBAction)tuanAction:(id)sender {
-    NSString *detailHtm = @"http://i.meituan.com/?city=wuhan";
-    CommDetailView *detailView = [[CommDetailView alloc] init];
-    detailView.titleStr = @"团购信息";
-    detailView.urlStr = detailHtm;
-    detailView.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailView animated:YES];
+//    NSString *detailHtm = @"http://i.meituan.com/?city=wuhan";
+//    CommDetailView *detailView = [[CommDetailView alloc] init];
+//    detailView.titleStr = @"团购信息";
+//    detailView.urlStr = detailHtm;
+//    detailView.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailView animated:YES];
+    //封板保留
+    ErrorView *errorView = [[ErrorView alloc] init];
+    errorView.titleStr = @"团购信息";
+    errorView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:errorView animated:YES];
 }
 
 //房屋租售
 - (IBAction)fwzsAction:(id)sender {
-    NSString *detailHtm = @"http://m.anjuke.com/wh/";
-    CommDetailView *detailView = [[CommDetailView alloc] init];
-    detailView.titleStr = @"房屋租售";
-    detailView.urlStr = detailHtm;
-    detailView.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailView animated:YES];
+//    NSString *detailHtm = @"http://m.anjuke.com/wh/";
+//    CommDetailView *detailView = [[CommDetailView alloc] init];
+//    detailView.titleStr = @"房屋租售";
+//    detailView.urlStr = detailHtm;
+//    detailView.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailView animated:YES];
+    //封板保留
+    ErrorView *errorView = [[ErrorView alloc] init];
+    errorView.titleStr = @"房屋租售";
+    errorView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:errorView animated:YES];
 }
 
 //装饰装修
 - (IBAction)zszxAction:(id)sender {
-    NSString *detailHtm = @"http://www.whjzw.net/m/";
-    CommDetailView *detailView = [[CommDetailView alloc] init];
-    detailView.titleStr = @"装饰装修";
-    detailView.urlStr = detailHtm;
-    detailView.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailView animated:YES];
+//    NSString *detailHtm = @"http://www.whjzw.net/m/";
+//    CommDetailView *detailView = [[CommDetailView alloc] init];
+//    detailView.titleStr = @"装饰装修";
+//    detailView.urlStr = detailHtm;
+//    detailView.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailView animated:YES];
+    //封板保留
+    ErrorView *errorView = [[ErrorView alloc] init];
+    errorView.titleStr = @"装饰装修";
+    errorView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:errorView animated:YES];
 }
 @end
