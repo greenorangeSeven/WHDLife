@@ -66,6 +66,7 @@
 		14195E311A5A32D1000C3069 /* MainPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14195E2F1A5A32D1000C3069 /* MainPageView.xib */; };
 		1428DD821A845FDB00658CA0 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1428DD801A845FDB00658CA0 /* ErrorView.m */; };
 		1428DD831A845FDB00658CA0 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1428DD811A845FDB00658CA0 /* ErrorView.xib */; };
+		1428DD8C1A84B23E00658CA0 /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1428DD8B1A84B23E00658CA0 /* UIViewController+CWPopup.m */; };
 		14346CF51A7B65F900BE6455 /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14346CF41A7B65F900BE6455 /* KeyboardManager.framework */; };
 		143895FC1A787F48008B8E61 /* ExpressCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 143895FB1A787F48008B8E61 /* ExpressCompany.m */; };
 		143896071A78CF03008B8E61 /* MyOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 143896061A78CF03008B8E61 /* MyOrder.m */; };
@@ -124,7 +125,6 @@
 		1454CE4E1A557E77003AA21E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD171A557E76003AA21E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1454CE4F1A557E77003AA21E /* IconDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD1A1A557E76003AA21E /* IconDownloader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1454CE501A557E77003AA21E /* ImgRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD1C1A557E76003AA21E /* ImgRecord.m */; };
-		1454CE531A557E77003AA21E /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD601A557E77003AA21E /* UIViewController+CWPopup.m */; };
 		1454CE541A557E77003AA21E /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD641A557E77003AA21E /* EGOCache.m */; };
 		1454CE551A557E77003AA21E /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD671A557E77003AA21E /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1454CE561A557E77003AA21E /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1454CD6A1A557E77003AA21E /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -623,6 +623,8 @@
 		1428DD7F1A845FDB00658CA0 /* ErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorView.h; sourceTree = "<group>"; };
 		1428DD801A845FDB00658CA0 /* ErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorView.m; sourceTree = "<group>"; };
 		1428DD811A845FDB00658CA0 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		1428DD8A1A84B23E00658CA0 /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
+		1428DD8B1A84B23E00658CA0 /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
 		14346CF41A7B65F900BE6455 /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 		143895FA1A787F48008B8E61 /* ExpressCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressCompany.h; sourceTree = "<group>"; };
 		143895FB1A787F48008B8E61 /* ExpressCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressCompany.m; sourceTree = "<group>"; };
@@ -735,8 +737,6 @@
 		1454CD1A1A557E76003AA21E /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
 		1454CD1B1A557E76003AA21E /* ImgRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgRecord.h; sourceTree = "<group>"; };
 		1454CD1C1A557E76003AA21E /* ImgRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgRecord.m; sourceTree = "<group>"; };
-		1454CD5F1A557E77003AA21E /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
-		1454CD601A557E77003AA21E /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
 		1454CD631A557E77003AA21E /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		1454CD641A557E77003AA21E /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		1454CD661A557E77003AA21E /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
@@ -1537,6 +1537,15 @@
 			name = MainPage;
 			sourceTree = "<group>";
 		};
+		1428DD891A84B23E00658CA0 /* CWPopup */ = {
+			isa = PBXGroup;
+			children = (
+				1428DD8A1A84B23E00658CA0 /* UIViewController+CWPopup.h */,
+				1428DD8B1A84B23E00658CA0 /* UIViewController+CWPopup.m */,
+			);
+			path = CWPopup;
+			sourceTree = "<group>";
+		};
 		143896041A78B8F8008B8E61 /* MyOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1696,6 +1705,7 @@
 		1454CCB71A557E76003AA21E /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1428DD891A84B23E00658CA0 /* CWPopup */,
 				0405EEB31A806B4B00D33A2B /* alipay */,
 				14476FB61A5F5C3E00CFF787 /* YRSideViewController */,
 				1454CCB81A557E76003AA21E /* AES */,
@@ -1704,7 +1714,6 @@
 				1454CCFC1A557E76003AA21E /* ASIHttp */,
 				1454CD181A557E76003AA21E /* AsyncImg */,
 				1454CEF11A5771A9003AA21E /* BaiduMapSDK */,
-				1454CD5E1A557E77003AA21E /* CWPopup */,
 				1454CD611A557E77003AA21E /* EGOImageLoading */,
 				1454CD701A557E77003AA21E /* EGORefreshTable */,
 				1454CD801A557E77003AA21E /* Extensions */,
@@ -1829,15 +1838,6 @@
 				1454CD1C1A557E76003AA21E /* ImgRecord.m */,
 			);
 			path = AsyncImg;
-			sourceTree = "<group>";
-		};
-		1454CD5E1A557E77003AA21E /* CWPopup */ = {
-			isa = PBXGroup;
-			children = (
-				1454CD5F1A557E77003AA21E /* UIViewController+CWPopup.h */,
-				1454CD601A557E77003AA21E /* UIViewController+CWPopup.m */,
-			);
-			path = CWPopup;
 			sourceTree = "<group>";
 		};
 		1454CD611A557E77003AA21E /* EGOImageLoading */ = {
@@ -3021,6 +3021,7 @@
 				1454CE491A557E77003AA21E /* ASIFormDataRequest.m in Sources */,
 				1454CE481A557E77003AA21E /* ASIDownloadCache.m in Sources */,
 				14A8490B1A75E98D0054D8BA /* KYBubbleView.m in Sources */,
+				1428DD8C1A84B23E00658CA0 /* UIViewController+CWPopup.m in Sources */,
 				14C427D41A624BE5004E919D /* RepairResultView.m in Sources */,
 				1454CE5A1A557E77003AA21E /* EGORefreshTableHeaderView.m in Sources */,
 				1454CE6C1A557E77003AA21E /* FMDatabasePool.m in Sources */,
@@ -3028,7 +3029,6 @@
 				1454CE551A557E77003AA21E /* EGOImageButton.m in Sources */,
 				14ED95BB1A70A68800EA9404 /* ResetPassWordView.m in Sources */,
 				14867F0B1A6A0CBA004FFCA6 /* CommodityPropery.m in Sources */,
-				1454CE531A557E77003AA21E /* UIViewController+CWPopup.m in Sources */,
 				1495D6411A63B7560059FB47 /* SuitResutCell.m in Sources */,
 				14B8D3A51A6795A4000A58D1 /* HistoryExpressView.m in Sources */,
 				04B0F57A1A7B6029002ACAFB /* FriendsMyPublishCell.m in Sources */,
@@ -3335,8 +3335,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3356,7 +3356,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
+				PROVISIONING_PROFILE = "44bfe092-1924-46f0-ae76-09445664e11e";
 				SDKROOT = iphoneos8.1;
 			};
 			name = Debug;
@@ -3379,8 +3379,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3393,7 +3393,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
+				PROVISIONING_PROFILE = "44bfe092-1924-46f0-ae76-09445664e11e";
 				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = YES;
 			};

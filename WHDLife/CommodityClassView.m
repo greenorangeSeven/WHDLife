@@ -9,7 +9,7 @@
 #import "CommodityClassView.h"
 #import "CommodityClassCell.h"
 #import "CommodityClass.h"
-#import "CommodityClassReusableView.h"
+
 #import "CommDetailView.h"
 #import "CommodityView.h"
 #import "ActivityDetailView.h"
@@ -36,7 +36,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor clearColor];
     [self.collectionView registerClass:[CommodityClassCell class] forCellWithReuseIdentifier:CommodityClassCellIdentifier];
-    [self.collectionView registerClass:[CommodityClassReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CommodityClassHead"];
+//    [self.collectionView registerClass:[CommodityClassReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CommodityClassHead"];
     
     //添加的代码
     if (_refreshHeaderView == nil) {
@@ -48,6 +48,8 @@
     [_refreshHeaderView refreshLastUpdatedDate];
     
     [self refreshExpressData];
+    
+    [self getADVData];
 }
 
 - (void)refreshExpressData
@@ -245,16 +247,17 @@
 }
 
 // 返回headview或footview
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *reusableview = nil;
-    if (kind == UICollectionElementKindSectionHeader){
-        CommodityClassReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CommodityClassHead" forIndexPath:indexPath];
-        reusableview = headerView;
-        self.advIv = headerView.advIv;
-        [self getADVData];
-    }
-    return reusableview;
-}
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+//    UICollectionReusableView *reusableview = nil;
+//    if (kind == UICollectionElementKindSectionHeader){
+//        CommodityClassReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CommodityClassHead" forIndexPath:indexPath];
+//        reusableview = headerView;
+////        [headerView getADVData];
+//                self.advIv = headerView.advIv;
+//        [self getADVData];
+//    }
+//    return reusableview;
+//}
 
 - (void)getADVData
 {
@@ -398,6 +401,7 @@
 {
     [super viewWillAppear:animated];
     bannerView.delegate = self;
+
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.navigationController.navigationBar.hidden = NO;

@@ -60,8 +60,8 @@
     self.facebgLb.layer.masksToBounds=YES;
     self.facebgLb.layer.cornerRadius=self.facebgLb.frame.size.width/2;    //最重要的是这个地方要设成view高的一半
     
-    [self.faceIv setImageWithURL:[NSURL URLWithString:userInfo.photoFull] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
-    [self.mybgImageIv setImageWithURL:[NSURL URLWithString:userInfo.bgImgFull] placeholderImage:[UIImage imageNamed:@"my_bg"]];
+    [self.faceIv sd_setImageWithURL:[NSURL URLWithString:userInfo.photoFull] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
+    [self.mybgImageIv sd_setImageWithURL:[NSURL URLWithString:userInfo.bgImgFull] placeholderImage:[UIImage imageNamed:@"my_bg"]];
     self.nickNameLb.text = userInfo.nickName;
     self.userNameTf.text = userInfo.nickName;
     self.telphoneTf.text = userInfo.mobileNo;
@@ -221,10 +221,10 @@
 
 #pragma mark VPImageCropperDelegate
 - (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage {
-    self.faceIv.image = editedImage;
     uploadFace = editedImage;
     [cropperViewController dismissViewControllerAnimated:YES completion:^{
         if ([uploadType isEqualToString:@"0"] == YES) {
+            self.faceIv.image = editedImage;
             [self uploadFaceApi];
         }
         else if ([uploadType isEqualToString:@"1"] == YES)
@@ -321,7 +321,7 @@
     else
     {
         NSString *userPhoto = [json objectForKey:@"data"];
-        [self.faceIv setImageWithURL:[NSURL URLWithString:userPhoto] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
+        [self.faceIv sd_setImageWithURL:[NSURL URLWithString:userPhoto] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
         userInfo.photoFull = userPhoto;
         UserModel *userModel = [UserModel Instance];
         [userModel saveUserInfo:userInfo];

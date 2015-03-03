@@ -26,8 +26,9 @@
     int advIndex;
 }
 
-@property (strong, nonatomic) UIImageView *advIv;
+//@property (strong, nonatomic) UIImageView *advIv;
 
+@property (weak, nonatomic) IBOutlet UIImageView *advIv;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 - (void)refreshExpressData;
