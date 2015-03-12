@@ -61,14 +61,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)updateFaceAcion:(id)sender {
     UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -86,8 +86,8 @@
     [userModel logoutUser];
     [userModel saveAccount:@"" andPwd:@""];
     
-//    UserHouse *defaultHouse = [userModel getUserInfo].defaultUserHouse;
-//    [XGPush delTag:defaultHouse.cellId];
+    //    UserHouse *defaultHouse = [userModel getUserInfo].defaultUserHouse;
+    //    [XGPush delTag:defaultHouse.cellId];
     
     LoginView *loginView = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
     UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:loginView];
@@ -159,15 +159,15 @@
     MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
     [mainTab.mainPageNav pushViewController:basicSetting animated:YES];
     
-//    MySettingView *mysettingView = [[MySettingView alloc] init];
-//    mysettingView.hidesBottomBarWhenPushed = YES;
-//    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
-//    [mainTab.mainPageNav pushViewController:mysettingView animated:YES];
+    //    MySettingView *mysettingView = [[MySettingView alloc] init];
+    //    mysettingView.hidesBottomBarWhenPushed = YES;
+    //    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
+    //    [mainTab.mainPageNav pushViewController:mysettingView animated:YES];
     
-//    MyFrameView *myView = [[MyFrameView alloc] init];
-//    myView.hidesBottomBarWhenPushed = YES;
-//    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
-//    [mainTab.mainPageNav pushViewController:myView animated:YES];
+    //    MyFrameView *myView = [[MyFrameView alloc] init];
+    //    myView.hidesBottomBarWhenPushed = YES;
+    //    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
+    //    [mainTab.mainPageNav pushViewController:myView animated:YES];
 }
 
 - (IBAction)inviteAction:(id)sender {
@@ -189,6 +189,14 @@
     [self.sideViewController hideSideViewController:YES];
     MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
     [mainTab.mainPageNav pushViewController:managerInfoView animated:YES];
+}
+
+- (IBAction)goMyPageAction:(id)sender {
+    [self.sideViewController hideSideViewController:YES];
+    MySettingView *mysettingView = [[MySettingView alloc] init];
+    mysettingView.hidesBottomBarWhenPushed = YES;
+    MainTabView *mainTab = (MainTabView *)self.sideViewController.rootViewController;
+    [mainTab.mainPageNav pushViewController:mysettingView animated:YES];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

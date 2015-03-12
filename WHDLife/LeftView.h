@@ -21,5 +21,6 @@
 - (IBAction)basicSettingAction:(id)sender;
 - (IBAction)inviteAction:(id)sender;
 - (IBAction)helpPageAction:(id)sender;
+- (IBAction)goMyPageAction:(id)sender;
 
 @end

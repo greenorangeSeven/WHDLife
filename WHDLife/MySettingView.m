@@ -37,7 +37,7 @@
     titleLabel.textAlignment = UITextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"修改" style:UIBarButtonItemStyleBordered target:self action:@selector(modifyUserInfoAction:)];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(modifyUserInfoAction:)];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     self.fieldArray = @[self.userNameTf, self.nameTf, self.emailTf];
