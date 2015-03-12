@@ -265,8 +265,8 @@
 #define HTML_Splitline @"<hr style='height:0.5px; background-color:#0D6DA8; margin-bottom:5px'/>"
 #define HTML_Bottom @"<div style='margin-bottom:60px'/>"
 
-#define AppVersion @"1.0"
-#define AppVersionCode @"1"
+#define AppVersion @"1.1"
+#define AppVersionCode @"2"
 
 #define noConnect @"noConnect"
 #define wifi @"wifi"

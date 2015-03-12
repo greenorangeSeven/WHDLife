@@ -284,14 +284,17 @@
         BOOL detele = [database executeUpdate:@"delete from shoppingcar where ischeck = '1'"];
         [database close];
         [Tool showCustomHUD:@"下单成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
-        [self.navigationController popViewControllerAnimated:YES];
-        if (self.fromShopCar) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_ShopCarGotoOrder object:nil];
-        }
-        else
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CommodityDetailGotoOrder object:nil];
-        }
+//        [self.navigationController popViewControllerAnimated:YES];
+//        if (self.fromShopCar) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_ShopCarGotoOrder object:nil];
+//        }
+//        else
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CommodityDetailGotoOrder object:nil];
+//        }
+        MyOrderView *myOrder = [[MyOrderView alloc] init];
+        myOrder.fromBuy = YES;
+        [self.navigationController pushViewController:myOrder animated:YES];
     }
 }
 

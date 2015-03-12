@@ -3405,7 +3405,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WHDLife/IQKeyboardManager",
@@ -3429,7 +3429,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
+				PROVISIONING_PROFILE = "44bfe092-1924-46f0-ae76-09445664e11e";
 			};
 			name = Debug;
 		};
@@ -3439,7 +3439,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Pan (39TH7G7JYY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Pan (FQ3R22U9FW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WHDLife/IQKeyboardManager",
@@ -3463,7 +3463,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ecbb51e8-04ea-4eb4-86b6-efa756b0d1e3";
+				PROVISIONING_PROFILE = "44bfe092-1924-46f0-ae76-09445664e11e";
 			};
 			name = Release;
 		};

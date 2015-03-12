@@ -20,6 +20,8 @@
     BOOL _reloading;
 }
 
+@property bool fromBuy;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIButton *item1Btn;

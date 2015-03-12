@@ -217,21 +217,25 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     int row = [indexPath row];
-    ExpressInfo *e = [express objectAtIndex:row];
-    if(e)
-    {
-        if(e.isChecked)
-        {
-            e.isChecked = NO;
-        }
-        else
-        {
-            e.isChecked = YES;
-        }
-        [self.tableView reloadData];
+    if (row >= [express count]) {
+        return;
     }
-    
-    
+    else
+    {
+        ExpressInfo *e = [express objectAtIndex:row];
+        if(e)
+        {
+            if(e.isChecked)
+            {
+                e.isChecked = NO;
+            }
+            else
+            {
+                e.isChecked = YES;
+            }
+            [self.tableView reloadData];
+        }
+    }
 }
 
 #pragma 下提刷新

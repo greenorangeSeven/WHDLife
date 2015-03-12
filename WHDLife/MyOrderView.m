@@ -33,6 +33,11 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
     
+    if (self.fromBuy) {
+        UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithTitle: @"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(backAction)];
+        self.navigationItem.leftBarButtonItem = leftBtn;
+    }
+    
     userInfo = [[UserModel Instance] getUserInfo];
     
     self.tableView.dataSource = self;
@@ -56,6 +61,14 @@
     orders = [[NSMutableArray alloc] initWithCapacity:20];
     [self getUrl];
     [self reload:YES];
+}
+
+- (void)backAction
+{
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [arr removeObjectAtIndex:arr.count - 2];
+    self.navigationController.viewControllers = arr;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)getUrl
