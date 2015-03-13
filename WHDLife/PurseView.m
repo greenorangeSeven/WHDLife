@@ -91,9 +91,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     int row = [indexPath row];
+    if (row >= [appArray count]) {
+        return;
+    }
+    else
+    {
     NSDictionary *app = [appArray objectAtIndex:row];
     NSString *urlString = [NSString stringWithFormat:@"%@://",[app objectForKey:@"app"]];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -46,6 +46,13 @@
         self.navigationItem.leftBarButtonItem = btnBack;
     }
     
+    if([self.titleStr isEqualToString:@"关于"])
+    {
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"使用协议" style:UIBarButtonItemStyleBordered target:self action:@selector(agreementAction)];
+        rightBtn.tintColor = [UIColor whiteColor];
+        self.navigationItem.rightBarButtonItem = rightBtn;
+    }
+    
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     [Tool showHUD:@"正在加载" andView:self.view andHUD:hud];
     //WebView的背景颜色去除
@@ -60,6 +67,17 @@
     {
         self.webView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.frameView.frame.size.height);
     }
+}
+
+- (void)agreementAction
+{
+    NSString *helpHtm = [NSString stringWithFormat:@"%@%@%@", api_base_urlnotport, htm_regService, AccessId];
+    CommDetailView *managerInfoView = [[CommDetailView alloc] init];
+    managerInfoView.titleStr = @"使用协议";
+    managerInfoView.urlStr = helpHtm;
+    managerInfoView.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:managerInfoView animated:YES];
 }
 
 - (void)closeAction

@@ -63,6 +63,9 @@
                     forControlEvents:UIControlEventValueChanged];
     self.cutOffTimeTf.inputView = self.cutOffTimePicker;
     self.cutOffTimeTf.delegate = self;
+    
+    NSDate *nowDate = [NSDate date];
+    self.startTimePicker.minimumDate = nowDate;
 }
 
 - (UIToolbar *)keyboardToolBar:(int)fieldIndex
