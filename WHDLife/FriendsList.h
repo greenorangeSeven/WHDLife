@@ -18,7 +18,7 @@
 @property (nonatomic ,copy) NSString *stateId;
 @property (nonatomic ,copy) NSString *cellId;
 @property (nonatomic ,copy) NSString *regUserId;
-@property (nonatomic ,copy) NSString *typeId;
+@property  int typeId;
 @property (nonatomic ,copy) NSString *typeName;
 @property (nonatomic ,copy) NSString *stateName;
 @property (nonatomic ,copy) NSString *regUserName;

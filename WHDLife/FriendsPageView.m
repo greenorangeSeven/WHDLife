@@ -51,7 +51,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     typeId = 0;
+    
     imgWidth = self.view.frame.size.width / 3 - 8;
+    
     UIButton *btnLabel = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 120, 44)];
     [btnLabel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btnLabel setTitle:@"全部" forState:UIControlStateNormal];
@@ -76,7 +78,8 @@
     layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     layout.delegate = self;
     layout.columnCount = 3;
-    layout.itemWidth = imgWidth;
+    [layout setItemWidth:imgWidth];
+    
     [self.collectionView setCollectionViewLayout:layout];
     _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     friendsTypeView = [FriendsTypeView instance];
@@ -92,7 +95,7 @@
     noDataLabel.text = @"暂无数据";
     noDataLabel.textColor = [UIColor blackColor];
     noDataLabel.backgroundColor = [UIColor clearColor];
-    noDataLabel.textAlignment = UITextAlignmentCenter;
+    noDataLabel.textAlignment = NSTextAlignmentCenter;
     noDataLabel.hidden = YES;
     [self.view addSubview:noDataLabel];
     
@@ -458,7 +461,7 @@
     UICollectionViewWaterfallLayout *layout =
     (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     layout.columnCount = 3;
-    layout.itemWidth = imgWidth;
+    [layout setItemWidth:imgWidth];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -486,7 +489,7 @@
 {
     FriendsImgCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FriendsImgCell" forIndexPath:indexPath];
     if (!cell) {
-        NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"CommodityClassCell" owner:self options:nil];
+        NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"FriendsImgCell" owner:self options:nil];
         for (NSObject *o in objects) {
             if ([o isKindOfClass:[FriendsImgCell class]]) {
                 cell = (FriendsImgCell *)o;
@@ -498,7 +501,51 @@
     FriendsList *cate = [friendsList objectAtIndex:indexRow];
     
     NSString *imgUrl = cate.imgUrlList[0];
-    [cell bindData:imgUrl];
+    ImgList *imgList = cate.imgList[0];
+    //计算缩放比
+    float scale = (float)imgWidth / (float)imgList.picWidth;
+    //获得缩放后的高度
+    float imgHeight = imgList.picHeight * scale;
+    
+    if(cell.contentLabel)
+        [cell.contentLabel removeFromSuperview];
+    
+    if(cell.tagImg)
+        [cell.tagImg removeFromSuperview];
+    CGRect imgFrame = CGRectMake(cell.frame.size.width - 20,3, 20, 20);
+    cell.tagImg = nil;
+    cell.tagImg = [[UIImageView alloc] initWithFrame:imgFrame];
+    switch (typeId) {
+        case 0:
+            cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_share"];
+            break;
+        case 1:
+            cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_help"];
+            break;
+        case 2:
+            cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_tiaosao"];
+            break;
+        case 3:
+            cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_tucao"];
+            break;
+        case 4:
+            cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_zhaocha"];
+            break;
+    }
+    
+    [cell addSubview:cell.tagImg];
+    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
+    cell.imgView.frame = CGRectMake(cell.imgView.frame.origin.x, cell.imgView.frame.origin.y, cell.frame.size.width, imgHeight);
+    CGRect frame = CGRectMake(10, cell.imgView.frame.size.height + 8, cell.frame.size.width - 20, 20);
+    cell.contentLabel = nil;
+    cell.contentLabel = [[UILabel alloc] initWithFrame:frame];
+    cell.contentLabel.font = [UIFont systemFontOfSize:11];
+    cell.contentLabel.textColor = [UIColor colorWithRed:140/255 green:133/255 blue:126/255 alpha:1];
+    cell.contentLabel.numberOfLines = 1;
+    cell.contentLabel.text = cate.content;
+    [cell addSubview:cell.contentLabel];
+    
+//    [cell bindData:imgUrl typeIdIs:cate.typeId imgHeight:imgHeight text:cate.content];
     return cell;
 }
 
@@ -512,7 +559,7 @@
     //计算缩放比
     float scale = (float)imgWidth / (float)imgList.picWidth;
     //获得缩放后的高度
-    float imgHeight = imgList.picHeight * scale;
+    float imgHeight = imgList.picHeight * scale + 30;
     return imgHeight;
 }
 
