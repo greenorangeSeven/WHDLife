@@ -51,7 +51,8 @@
     self.dateTf.inputView = self.gatherDatePicker;
     self.dateTf.delegate = self;
     
-    self.timeBucketArray = @[@"10:00~12:00", @"12:00~14:00", @"14:00~16:00", @"16:00~18:00", @"18:00~20:00", @"20:00~22:00"];
+//    self.timeBucketArray = @[@"10:00~12:00", @"12:00~14:00", @"14:00~16:00", @"16:00~18:00", @"18:00~20:00", @"20:00~22:00"];
+    self.timeBucketArray = @[@"17:00~19:00"];
     self.gatherTimeBucketPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
     self.gatherTimeBucketPicker.showsSelectionIndicator = YES;
     self.gatherTimeBucketPicker.delegate = self;
@@ -189,7 +190,8 @@
     [request setPostValue:AccessId forKey:@"accessId"];
     [request setPostValue:setReceiveTypeSign forKey:@"sign"];
     [request setPostValue:self.expressId forKey:@"expressId"];
-    [request setPostValue:selectTYpe forKey:@"receivesTypeId"];
+//    [request setPostValue:selectTYpe forKey:@"receivesTypeId"];
+    [request setPostValue:@"3" forKey:@"receivesTypeId"];
     if ([selectTYpe isEqualToString:@"1"] == YES) {
         [request setPostValue:self.dateTf.text forKey:@"appointmentTime"];
         [request setPostValue:[NSString stringWithFormat:@"%d", selectTimeTypeValue] forKey:@"timeId"];

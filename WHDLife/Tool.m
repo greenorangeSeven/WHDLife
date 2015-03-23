@@ -676,7 +676,7 @@
     }
 }
 
-//解析社区JSON（包含社区、楼栋、门牌）
+//解析社区JSON（包含社区、区域）
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -704,6 +704,24 @@
         }
     }
     return communityArray;
+}
+
+//解析社区JSON（楼栋、门牌）
++ (NSMutableArray *)readJsonStrToUnitArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *unitJsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( unitJsonDic == nil || [unitJsonDic count] <= 0) {
+        return nil;
+    }
+    NSArray *unitArrayJson = [unitJsonDic objectForKey:@"data"];
+    NSMutableArray *unitArray = [RMMapper mutableArrayOfClass:[Unit class] fromArrayOfDictionary:unitArrayJson];
+    for (Unit *unit in unitArray) {
+        NSArray *unitSubList = unit.subList;
+        unit.houseNumList = [RMMapper mutableArrayOfClass:[HouseNum class] fromArrayOfDictionary:unitSubList];
+    }
+    return unitArray;
 }
 
 //解析登陆JSON

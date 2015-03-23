@@ -399,7 +399,8 @@
     [request setPostValue:contentStr forKey:@"userRecontent"];
     [request setPostValue:[NSString stringWithFormat:@"%d", gradeValue] forKey:@"score"];
     [request setPostValue:[NSString stringWithFormat:@"%d", self.express.inOrOut] forKey:@"inOrOut"];
-    for (int i = 0 ; i < [repairImageArray count] - 1; i++) {
+    
+    for (int i = 0 ; i < [repairImageArray count]; i++) {
         UIImage *repairImage = [repairImageArray objectAtIndex:i];
         [request addData:UIImageJPEGRepresentation(repairImage, 0.8f) withFileName:@"img.jpg" andContentType:@"image/jpeg" forKey:[NSString stringWithFormat:@"pic%d", i]];
     }

@@ -66,6 +66,8 @@
     
     NSDate *nowDate = [NSDate date];
     self.startTimePicker.minimumDate = nowDate;
+    self.endTimePicker.minimumDate = nowDate;
+    self.cutOffTimePicker.maximumDate = nowDate;
 }
 
 - (UIToolbar *)keyboardToolBar:(int)fieldIndex
@@ -95,6 +97,33 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     textField.inputAccessoryView = [self keyboardToolBar:textField.tag];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString *dateAndTime =  [dateFormatter stringFromDate:[NSDate date]];
+    if(textField == self.startTimeTf)
+    {
+        self.startTimeTf.text = dateAndTime;
+    }
+    else if (textField == self.endTimeTf)
+    {
+        if ([self.startTimeTf.text length] > 0) {
+            self.endTimeTf.text = self.startTimeTf.text;
+        }
+        else
+        {
+            self.endTimeTf.text = dateAndTime;
+        }
+    }
+    else if (textField == self.cutOffTimeTf)
+    {
+        if ([self.startTimeTf.text length] > 0) {
+            self.cutOffTimeTf.text = self.startTimeTf.text;
+        }
+        else
+        {
+            self.cutOffTimeTf.text = dateAndTime;
+        }
+    }
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
 }
 

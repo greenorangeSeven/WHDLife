@@ -161,6 +161,8 @@
 + (NSMutableArray *)readJsonStrToCityArray:(NSString *)str;
 //解析社区JSON（包含社区、楼栋、门牌）
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str;
+//解析社区JSON（楼栋、门牌）
++ (NSMutableArray *)readJsonStrToUnitArray:(NSString *)str;
 //解析登陆JSON
 + (UserInfo *)readJsonStrToLoginUserInfo:(NSString *)str;
 //解析社区活动JSON

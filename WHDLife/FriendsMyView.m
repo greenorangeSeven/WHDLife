@@ -255,7 +255,7 @@
             return 62;
         }
     }
-//    return 62;
+    //    return 62;
 }
 
 //列表数据渲染
@@ -351,7 +351,7 @@
                 {
                     [cell.facePic sd_setImageWithURL:[NSURL URLWithString:cate.photoFull] placeholderImage:[UIImage imageNamed:@"userface.png"]];
                 }
-
+                
                 return cell;
             }
         }
@@ -369,10 +369,18 @@
 //表格行点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FriendsList *fri = friendsList[indexPath.row];
-    FriendsDetailView *detailView = [[FriendsDetailView alloc] init];
-    detailView.topicId = fri.topicId;
-    [self.navigationController pushViewController:detailView animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    int row = [indexPath row];
+    if (row >= [friendsList count]) {
+        return;
+    }
+    else
+    {
+        FriendsList *fri = friendsList[indexPath.row];
+        FriendsDetailView *detailView = [[FriendsDetailView alloc] init];
+        detailView.topicId = fri.topicId;
+        [self.navigationController pushViewController:detailView animated:YES];
+    }
 }
 
 #pragma 下提刷新

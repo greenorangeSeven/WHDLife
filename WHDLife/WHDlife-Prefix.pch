@@ -39,12 +39,16 @@
 #define AccessId @"10000001"
 #define AccessKey @"Hr54hiz7"
 
-//#define api_base_url @"http://192.168.1.27:8080/dlife_api/"
+//#define api_base_url @"http://192.168.1.17:8080/dlife_api/"
 #define api_base_url @"http://112.74.100.243:80/dlife_api/"
 //查询城市接口
 #define api_findAllCity @"params/findAllCity.htm"
 //查询城市小区接口
 #define api_findCellListByCity @"params/findCellListByCity.htm"
+//查询城市小区楼栋接口
+#define api_findBuildingListByCity @"params/findBuildingListByCity.htm"
+//查询城市小区楼栋下房间接口
+#define api_findHouseListByCity @"params/findHouseListByCity.htm"
 //注册验证码
 #define api_createRegCode @"regUser/createRegCode.htm"
 //注册接口

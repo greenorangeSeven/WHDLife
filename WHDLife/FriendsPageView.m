@@ -511,29 +511,49 @@
         [cell.contentLabel removeFromSuperview];
     
     if(cell.tagImg)
+    {
         [cell.tagImg removeFromSuperview];
-    CGRect imgFrame = CGRectMake(cell.frame.size.width - 20,3, 20, 20);
+    }
+    CGRect imgFrame = CGRectMake(cell.frame.size.width - 50,3, 20, 20);
     cell.tagImg = nil;
     cell.tagImg = [[UIImageView alloc] initWithFrame:imgFrame];
-    switch (typeId) {
+    
+    if(cell.typeNameLb)
+    {
+        [cell.typeNameLb removeFromSuperview];
+    }
+    CGRect typeNameFrame = CGRectMake(cell.frame.size.width - 30,1, 30, 20);
+    cell.typeNameLb = [[UILabel alloc] initWithFrame:typeNameFrame];
+    [cell.typeNameLb setTextColor:[UIColor colorWithRed:77.0/255 green:77.0/255 blue:77.0/255 alpha:1.0]];
+    [cell.typeNameLb setFont:[UIFont systemFontOfSize:12.0]];
+    //设置阴影
+    cell.typeNameLb.shadowColor = [UIColor whiteColor];
+    cell.typeNameLb.shadowOffset = CGSizeMake(0.5,0.5);
+    switch (cate.typeId) {
         case 0:
+            [cell.typeNameLb setText:@"分享"];
             cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_share"];
             break;
         case 1:
+            [cell.typeNameLb setText:@"帮忙"];
             cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_help"];
             break;
         case 2:
+            [cell.typeNameLb setText:@"市场"];
             cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_tiaosao"];
             break;
         case 3:
+            [cell.typeNameLb setText:@"吐槽"];
             cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_tucao"];
             break;
         case 4:
+            [cell.typeNameLb setText:@"找茬"];
             cell.tagImg.image = [UIImage imageNamed:@"friends_item_tag_zhaocha"];
             break;
     }
     
     [cell addSubview:cell.tagImg];
+    [cell addSubview:cell.typeNameLb];
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
     cell.imgView.frame = CGRectMake(cell.imgView.frame.origin.x, cell.imgView.frame.origin.y, cell.frame.size.width, imgHeight);
     CGRect frame = CGRectMake(10, cell.imgView.frame.size.height + 8, cell.frame.size.width - 20, 20);

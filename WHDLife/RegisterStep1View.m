@@ -100,14 +100,35 @@
     //生成获取城市下小区URL
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:cityId forKey:@"cityId"];
-    NSString *cellListUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findCellListByCity] params:param];
+    NSString *cellListUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findBuildingListByCity] params:param];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:cellListUrl]];
     [request setUseCookiePersistence:NO];
     [request setDelegate:self];
+    [request setTimeOutSeconds:30];
     [request setDidFailSelector:@selector(requestFailed:)];
     [request setDidFinishSelector:@selector(requestGetData:)];
     request.tag = 2;
+    [request startAsynchronous];
+    
+    request.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [Tool showHUD:@"数据加载..." andView:self.view andHUD:request.hud];
+}
+
+- (void)getUnitArrayData:(NSString *)buildingId
+{
+    //生成获取楼栋下房间URL
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:buildingId forKey:@"buildingId"];
+    NSString *unitListUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findHouseListByCity] params:param];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:unitListUrl]];
+    [request setUseCookiePersistence:NO];
+    [request setDelegate:self];
+    [request setTimeOutSeconds:30];
+    [request setDidFailSelector:@selector(requestFailed:)];
+    [request setDidFinishSelector:@selector(requestGetData:)];
+    request.tag = 3;
     [request startAsynchronous];
     
     request.hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -162,6 +183,23 @@
                 self.unitTf.enabled = NO;
                 self.houseNumTf.enabled = NO;
                 self.communityTf.text = @"暂无社区";
+            }
+        }
+        else if(request.tag == 3)
+        {
+            self.unitArray = [Tool readJsonStrToUnitArray:request.responseString];
+            [self.unitPicker reloadAllComponents];
+            
+            if ([self.unitArray count] > 0) {
+                self.unitTf.enabled = YES;
+                self.unitTf.text = @"单元";
+                self.houseNumTf.text = @"门牌号";
+            }
+            else
+            {
+                self.unitTf.enabled = NO;
+                self.unitTf.text = @"暂无单元";
+                self.houseNumTf.text = @"门牌号";
             }
         }
     }
@@ -441,18 +479,8 @@
         }
         Building *building = [self.buildingArray objectAtIndex:self.pickerSelectRow];
         self.buildingTf.text = building.buildingName;
-        self.unitArray = building.unitList;
-        [self.unitPicker reloadAllComponents];
+        [self getUnitArrayData:building.buildingId];
         
-        if ([self.unitArray count] > 0) {
-            self.unitTf.enabled = YES;
-            self.unitTf.text = @"单元";
-        }
-        else
-        {
-            self.unitTf.enabled = NO;
-            self.unitTf.text = @"暂无单元";
-        }
     }
     
     else if (sender.tag == 5)
@@ -562,7 +590,7 @@
     managerInfoView.titleStr = @"使用条款";
     managerInfoView.urlStr = helpHtm;
     managerInfoView.hidesBottomBarWhenPushed = YES;
-
+    
     [self.navigationController pushViewController:managerInfoView animated:YES];
 }
 @end

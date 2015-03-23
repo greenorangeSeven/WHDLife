@@ -252,11 +252,17 @@
 #pragma mark 收藏帖子
 - (IBAction)collectionAction:(id)sender
 {
+    if([userInfo.regUserId isEqualToString:friendsInfo.regUserId])
+    {
+        [Tool showCustomHUD:@"你不能收藏自己的帖子" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userInfo.regUserId forKey:@"regUserId"];
     [param setValue:friendsInfo.topicId forKey:@"topicId"];
     NSString *createSign = nil;
-    //生成创建帖子URL
+    //生成关注帖子URL
     NSString *createUrl = nil;
     if(friendsInfo.isHeart == 1)
     {
@@ -290,9 +296,14 @@
 #pragma mark 关注用户
 - (IBAction)focusAction:(id)sender
 {
+    if([userInfo.regUserId isEqualToString:friendsInfo.regUserId])
+    {
+        [Tool showCustomHUD:@"你不能关注您自己" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
-    [param setValue:userInfo.regUserId forKey:@"regUserId"];
-    [param setValue:friendsInfo.regUserId forKey:@"mainRegUserId"];
+    [param setValue:friendsInfo.regUserId forKey:@"regUserId"];
+    [param setValue:userInfo.regUserId forKey:@"mainRegUserId"];
     NSString *createSign = nil;
     //生成创建帖子URL
     NSString *createUrl = nil;
@@ -313,8 +324,8 @@
     
     [request setPostValue:AccessId forKey:@"accessId"];
     [request setPostValue:createSign forKey:@"sign"];
-    [request setPostValue:userInfo.regUserId forKey:@"regUserId"];
-    [request setPostValue:friendsInfo.regUserId forKey:@"mainRegUserId"];
+    [request setPostValue:friendsInfo.regUserId forKey:@"regUserId"];
+    [request setPostValue:userInfo.regUserId forKey:@"mainRegUserId"];
     [request setDelegate:self];
     request.tag = 2;
     [request setDidFailSelector:@selector(requestFailed:)];
@@ -387,6 +398,7 @@
     
     [request setUseCookiePersistence:YES];
     NSData *data = [request.responseString dataUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@", request.responseString);
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     

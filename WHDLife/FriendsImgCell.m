@@ -44,7 +44,7 @@
     
     switch (typeId) {
         case 0:
-            [self.tagImg sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"friends_item_tag_share"]];
+//            [self.tagImg sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"friends_item_tag_share"]];
             [self.tagImg setImage:[UIImage imageNamed:@"friends_item_tag_share"]];
             break;
         case 1:

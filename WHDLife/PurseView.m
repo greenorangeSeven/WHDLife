@@ -96,9 +96,9 @@
     }
     else
     {
-    NSDictionary *app = [appArray objectAtIndex:row];
-    NSString *urlString = [NSString stringWithFormat:@"%@://",[app objectForKey:@"app"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        NSDictionary *app = [appArray objectAtIndex:row];
+        NSString *urlString = [NSString stringWithFormat:@"%@://",[app objectForKey:@"app"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
     }
 }
 
@@ -108,13 +108,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

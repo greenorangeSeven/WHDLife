@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tag_bg;
 @property UIImageView *tagImg;
 @property UILabel *contentLabel;
+@property UILabel *typeNameLb;
 
 - (void)bindData:(NSString *)imgUrl typeIdIs:(int)typeId imgHeight:(CGFloat)imgHeight text:(NSString *)content;
 @end

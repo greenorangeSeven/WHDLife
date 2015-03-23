@@ -45,8 +45,8 @@
     
     //初始化拍照网格控件
     repairImageArray = [[NSMutableArray alloc] initWithCapacity:4];
-//    UIImage *myImage = [UIImage imageNamed:@"lucency"];
-//    [repairImageArray addObject:myImage];
+    //    UIImage *myImage = [UIImage imageNamed:@"lucency"];
+    //    [repairImageArray addObject:myImage];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -112,13 +112,13 @@
     
     [cell.handleBtn addTarget:self action:@selector(picHandleAction:) forControlEvents:UIControlEventTouchUpInside];
     cell.handleBtn.tag = row;
-//    if (row != [repairImageArray count] - 1) {
-//        [cell.handleBtn setImage:[UIImage imageNamed:@"pic_minus"] forState:UIControlStateNormal];
-//    }
-//    else
-//    {
-//        [cell.handleBtn setImage:[UIImage imageNamed:@"pic_add"] forState:UIControlStateNormal];
-//    }
+    //    if (row != [repairImageArray count] - 1) {
+    //        [cell.handleBtn setImage:[UIImage imageNamed:@"pic_minus"] forState:UIControlStateNormal];
+    //    }
+    //    else
+    //    {
+    //        [cell.handleBtn setImage:[UIImage imageNamed:@"pic_add"] forState:UIControlStateNormal];
+    //    }
     UIImage *repairImage = [repairImageArray objectAtIndex:row];
     cell.repairIv.image = repairImage;
     
@@ -246,7 +246,7 @@
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         UIImage *smallImage = [self imageByScalingToMaxSize:portraitImg];
-//        [repairImageArray insertObject:smallImage atIndex:[repairImageArray count] -1];
+        //        [repairImageArray insertObject:smallImage atIndex:[repairImageArray count] -1];
         [repairImageArray addObject:smallImage];
         if ([repairImageArray count] >= 3) {
             self.cameraBtn.hidden = YES;
@@ -441,7 +441,8 @@
     [request setPostValue:contactPhoneStr forKey:@"contactPhone"];
     [request setPostValue:addressStr forKey:@"houseName"];
     [request setPostValue:[NSString stringWithFormat:@"%d", urgentDegree] forKey:@"urgentDegree"];
-    for (int i = 0 ; i < [repairImageArray count] - 1; i++) {
+    
+    for (int i = 0 ; i < [repairImageArray count]; i++) {
         UIImage *repairImage = [repairImageArray objectAtIndex:i];
         [request addData:UIImageJPEGRepresentation(repairImage, 0.8f) withFileName:@"img.jpg" andContentType:@"image/jpeg" forKey:[NSString stringWithFormat:@"pic%d", i]];
     }
