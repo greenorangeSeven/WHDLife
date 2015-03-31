@@ -340,11 +340,11 @@
 #pragma mark 回复帖子
 - (IBAction)pushReplyAction:(id)sender
 {
-    if(friendsInfo.isReply)
-    {
-        [Tool showCustomHUD:@"您已评论过该贴" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
-        return;
-    }
+//    if(friendsInfo.isReply)
+//    {
+//        [Tool showCustomHUD:@"您已评论过该贴" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+//        return;
+//    }
     NSString *commentStr = self.comment_field.text;
     if ([commentStr length] == 0)
     {

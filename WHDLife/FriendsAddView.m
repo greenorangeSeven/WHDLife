@@ -309,6 +309,11 @@
         [Tool showCustomHUD:@"请输入内容" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
+    if (topicImg == nil)
+    {
+        [Tool showCustomHUD:@"请上传图片" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userInfo.regUserId forKey:@"regUserId"];

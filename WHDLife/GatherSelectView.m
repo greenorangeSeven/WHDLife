@@ -68,6 +68,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:select];
     self.dateTf.text = dateAndTime;
+    self.gatherDatePicker.minimumDate = select;
 }
 
 - (UIToolbar *)keyboardToolBar:(int)fieldIndex
@@ -178,7 +179,8 @@
     [param setValue:selectTYpe forKey:@"receivesTypeId"];
     if ([selectTYpe isEqualToString:@"1"] == YES) {
         [param setValue:self.dateTf.text forKey:@"appointmentTime"];
-        [param setValue:[NSString stringWithFormat:@"%d", selectTimeTypeValue] forKey:@"timeId"];
+//        [param setValue:[NSString stringWithFormat:@"%d", selectTimeTypeValue] forKey:@"timeId"];
+        [param setValue:@"3" forKey:@"timeId"];
     }
     NSString *setReceiveTypeSign = [Tool serializeSign:[NSString stringWithFormat:@"%@%@", api_base_url, api_setReceiveType] params:param];
     NSString *setReceiveTypeUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_setReceiveType];
@@ -190,11 +192,12 @@
     [request setPostValue:AccessId forKey:@"accessId"];
     [request setPostValue:setReceiveTypeSign forKey:@"sign"];
     [request setPostValue:self.expressId forKey:@"expressId"];
-//    [request setPostValue:selectTYpe forKey:@"receivesTypeId"];
-    [request setPostValue:@"3" forKey:@"receivesTypeId"];
+    [request setPostValue:selectTYpe forKey:@"receivesTypeId"];
+    
     if ([selectTYpe isEqualToString:@"1"] == YES) {
         [request setPostValue:self.dateTf.text forKey:@"appointmentTime"];
-        [request setPostValue:[NSString stringWithFormat:@"%d", selectTimeTypeValue] forKey:@"timeId"];
+//        [request setPostValue:[NSString stringWithFormat:@"%d", selectTimeTypeValue] forKey:@"timeId"];
+        [request setPostValue:@"3" forKey:@"timeId"];
     }
     
     [request setDelegate:self];

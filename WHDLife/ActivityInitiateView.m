@@ -98,7 +98,7 @@
 {
     textField.inputAccessoryView = [self keyboardToolBar:textField.tag];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:00"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:[NSDate date]];
     if(textField == self.startTimeTf)
     {
@@ -136,7 +136,7 @@
 {
     NSDate *select = [self.startTimePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:00"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:select];
     self.startTimeTf.text = dateAndTime;
     
@@ -144,23 +144,26 @@
     self.endTimeTf.text = @"";
     self.cutOffTimeTf.text = @"";
     self.endTimePicker.minimumDate = select;
-    self.cutOffTimePicker.maximumDate = select;
+    self.cutOffTimePicker.minimumDate = select;
 }
 
 -(void)endTimeChanged:(id)sender
 {
     NSDate *select = [self.endTimePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:00"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:select];
     self.endTimeTf.text = dateAndTime;
+    self.cutOffTimeTf.text = @"";
+    self.cutOffTimePicker.minimumDate = [self.startTimePicker date];
+    self.cutOffTimePicker.maximumDate = [self.endTimePicker date];
 }
 
 -(void)cutOffTimeChanged:(id)sender
 {
     NSDate *select = [self.cutOffTimePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:00"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:select];
     self.cutOffTimeTf.text = dateAndTime;
 }

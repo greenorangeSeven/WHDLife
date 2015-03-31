@@ -68,6 +68,7 @@
     
     self.addressTf.text = [NSString stringWithFormat:@"%@%@%@%@%@", userInfo.defaultUserHouse.cellName, userInfo.defaultUserHouse.regionName, userInfo.defaultUserHouse.buildingName, userInfo.defaultUserHouse.unitName,userInfo.defaultUserHouse.numberName];
     self.contactManTf.text = userInfo.regUserName;
+    self.contactPhoneTf.text = userInfo.mobileNo;
 }
 
 - (void)myRepairAction:(id)sender
