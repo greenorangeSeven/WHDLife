@@ -98,6 +98,7 @@
     isLoadOver = NO;
     [self reload:NO];
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
