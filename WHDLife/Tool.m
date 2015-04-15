@@ -897,6 +897,7 @@
                 dispatch.repairmanName = basic.repairmanName;
                 dispatch.mobileNo = basic.mobileNo;
                 dispatch.starttimeStamp = [[basic.repairRunList objectAtIndex:l] objectForKey:@"starttimeStamp"];
+                dispatch.runContent = [[basic.repairRunList objectAtIndex:l] objectForKey:@"runContent"];
                 dispatch.starttime = [self TimestampToDateStr:[dispatch.starttimeStamp stringValue] andFormatterStr:@"yyyy年MM月dd日 HH:mm"];
                 //添加报修派单数据
                 [items addObject:dispatch];

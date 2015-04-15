@@ -3335,8 +3335,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiliang Zhou (X5YK78R2A4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiliang Zhou (X5YK78R2A4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: WEN XIKE (KPRX6RYNKY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: WEN XIKE (KPRX6RYNKY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3356,7 +3356,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d435abbf-6398-4cc7-b3a4-a88dc17dfdba";
+				PROVISIONING_PROFILE = "0a9510f1-f872-4d82-a69c-0c83fd9adb13";
 				SDKROOT = iphoneos8.1;
 			};
 			name = Debug;
@@ -3379,8 +3379,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhiliang Zhou (X5YK78R2A4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhiliang Zhou (X5YK78R2A4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: WEN XIKE (KPRX6RYNKY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: WEN XIKE (KPRX6RYNKY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3393,7 +3393,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "d435abbf-6398-4cc7-b3a4-a88dc17dfdba";
+				PROVISIONING_PROFILE = "0a9510f1-f872-4d82-a69c-0c83fd9adb13";
 				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3486,7 +3486,7 @@
 				INFOPLIST_FILE = WHDLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1b4e680f-fb30-419d-83ed-6f71b73fe23f";
+				PROVISIONING_PROFILE = "0a9510f1-f872-4d82-a69c-0c83fd9adb13";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WHDLife.app/WHDLife";
 			};
 			name = Debug;
@@ -3504,7 +3504,7 @@
 				INFOPLIST_FILE = WHDLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1b4e680f-fb30-419d-83ed-6f71b73fe23f";
+				PROVISIONING_PROFILE = "0a9510f1-f872-4d82-a69c-0c83fd9adb13";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WHDLife.app/WHDLife";
 			};
 			name = Release;

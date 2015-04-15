@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSString *mobileNo;
 @property (nonatomic, retain) NSNumber *starttimeStamp;
 @property (nonatomic, retain) NSString *starttime;
+@property (nonatomic, retain) NSString *runContent;
 
 @end
